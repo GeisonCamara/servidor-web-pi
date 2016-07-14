@@ -9,9 +9,10 @@ module.exports = function(){
 		music.pause();
 	}, 1000);
 	
+	*/
 	
 	setTimeout(function(){
 		music.resume();
 	}, 3000);
-	*/
+	
 }
