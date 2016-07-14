@@ -1,5 +1,4 @@
 module.exports = function(device, user){
-    var sound = require('./sound.js');
     var mongo = require('./../classes/mongo/mongo.js');
     
     var now = new Date();  
