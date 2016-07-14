@@ -21,7 +21,7 @@ button.watch(function(err, value){
     	throw err;
   	}
   	if(value==1){
-    	lock('buttonOut', 'German');
+    	lock('buttonOut', 'Exit button');
   	}
 });
 dingdong.watch(function(err, value){

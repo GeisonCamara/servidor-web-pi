@@ -7,7 +7,7 @@ module.exports = function(){
 
 	setTimeout(function(){
 		music.pause();
-	}, 500);
+	}, 1000);
 	
 	/*
 	setTimeout(function(){
