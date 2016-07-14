@@ -1,6 +1,6 @@
 module.exports = function(){
 	var Sound = require('node-aplay');
-	var music = new Sound('../media/dingdong.wav');
+	var music = new Sound('./../media/dingdong.wav');
 
 	music.play();
 
