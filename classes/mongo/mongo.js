@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authentication');
-var users = mongoose.model('user', {name: String, key: String, nfc: String});
+var users = mongoose.model('user', {name: String, key: String, mobile: String, nfc: String, ativo: String});
 var historic = mongoose.model('historic', {dateTime: String, user: String, device: String});
 
 function mongo(){
