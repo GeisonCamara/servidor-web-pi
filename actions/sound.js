@@ -10,6 +10,6 @@ module.exports = function(){
 
 	setTimeout(function(){
 		music.resume();
-	}, 1000);
+	}, 2000);
 
 }
