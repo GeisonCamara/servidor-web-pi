@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 var Gpio = require('onoff').Gpio,
   	button = new Gpio(21, 'in', 'rising'),
-  	dingdong = new Gpio(21, 'in', 'rising'),
+  	dingdong = new Gpio(19, 'in', 'rising'),
   	vcc = new Gpio(26, 'out'),
     rele = new Gpio(16, 'out');
     
