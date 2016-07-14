@@ -4,12 +4,12 @@ module.exports = function(){
 
 	music.play();
 
-	/*
+
 	setTimeout(function(){
 		music.pause();
-	}, 1000);
+	}, 500);
 	
-	
+	/*
 	setTimeout(function(){
 		music.resume();
 	}, 3000);
