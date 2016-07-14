@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var lock = require('./../actions/lock.js');
+var sound = require('./../actions/sound.js');
 
 router.get('/', function(req, res, next) {
   	res.render('index', { title: 'Raspberry PI' });
@@ -8,6 +9,7 @@ router.get('/', function(req, res, next) {
 
 var Gpio = require('onoff').Gpio,
   	button = new Gpio(21, 'in', 'rising'),
+  	dingdong = new Gpio(21, 'in', 'rising'),
   	vcc = new Gpio(26, 'out'),
     rele = new Gpio(16, 'out');
     
@@ -20,6 +22,14 @@ button.watch(function(err, value){
   	}
   	if(value==1){
     	lock('buttonOut', 'German');
+  	}
+});
+dingdong.watch(function(err, value){
+  	if (err) {
+    	throw err;
+  	}
+  	if(value==1){
+    	sound();
   	}
 });
 
