@@ -13,9 +13,9 @@ module.exports = function(device, user){
     
     var Gpio = require('onoff').Gpio,
         lock = new Gpio(20, 'out');
-        
+    
+    sound();    
     lock.writeSync(1);
-    sound();
     
     console.log(insertObj);
 
