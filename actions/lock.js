@@ -16,8 +16,10 @@ module.exports = function(device, user){
         
     lock.writeSync(1);
     sound();
+    
+    console.log(insertObj);
 
-    mongo.insert(insertObj);
+    mongo.insert(insertObj, function(){});
     setTimeout(function(){
         lock.writeSync(0);
     },3000);
