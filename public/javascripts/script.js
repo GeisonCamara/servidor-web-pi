@@ -9,9 +9,11 @@ function showButton(){
 function clickButton(){
 	$('#button').click(function(){
     	var state = $('#button').is(":checked");
+    	$(this).prop('disabled', true);
     	if(state===true){
     		setTimeout(function(){
     			$('#button').attr('checked', false);
+    			$('#button').prop('disabled', false);
     		},3000);
     	}
 	});
