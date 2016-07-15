@@ -1,9 +1,20 @@
-$(document).ready(function(){
-    $('.switch').hide();
-    $('.switch').fadeIn(1000);
+function hideButton(){
+	$('.switch').hide();
+}
 
-    var teste = $('#button').is(":checked");
-    alert(teste);
-    	
-    });
+function showButton(){
+	$('.switch').fadeIn(1000);
+}
+
+function clickButton(){
+	$('#button').click(function(){
+    	var teste = $('#button').is(":checked");
+    	alert(teste);
+	});
+}
+
+$(document).ready(function(){
+    hideButton();
+    showButton();
+    clickButton();
 });
