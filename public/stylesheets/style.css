@@ -30,6 +30,10 @@ a{
 .navbar{
   border-radius: 0px;
 }
+
+.dropdown-toggle{
+  cursor: pointer;
+}
 /*
 header{
   width: 100%;
