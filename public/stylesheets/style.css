@@ -2,7 +2,6 @@ html, body{
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  padding:10px;
 }
 body{
   font-family: 'Open Sans Condensed','Arial Narrow', serif;
