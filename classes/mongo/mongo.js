@@ -38,19 +38,13 @@ mongo.prototype.insert = function(newObj, type, callback){
     });
 }
 
-mongo.prototype.update = function(queryObj, callback){
+mongo.prototype.update = function(queryObj, req, callback){
     users.findOne(queryObj, function (err, userObj) {
         if (err) {
             console.log(err);
         } else if (userObj) {
             console.log('Found:', userObj);
-            callback();
-        //For demo purposes lets update the user on condition.
-        /*if (userObj.age != 30) {
-            //Some demo manipulation
-            userObj.age += 30;
-
-            //Lets save it
+            userObj = callback(userObj, req);
             userObj.save(function (err) {
                 if (err) {
                     console.log(err);
@@ -58,7 +52,6 @@ mongo.prototype.update = function(queryObj, callback){
                     console.log('Updated', userObj);
                 }
             });
-        }*/
         } else {
             console.log('User not found!');
         }
