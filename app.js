@@ -14,7 +14,6 @@ var historicSearch = require('./routes/front-end/historic/search');
 var userSearch = require('./routes/front-end/user/search');
 var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
-var userDelete = require('./routes/front-end/user/delete');
 
 
 var app = express();
@@ -34,13 +33,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', inicio);
 app.use('/unlock', unlock);
 app.use('/authentication/mobile/', authentication);
-app.use('/user', user);
 app.use('/historic', historic);
-app.use('/user/search', userSearch);
 app.use('/historic/search', historicSearch);
-app.use('/user/insert', userInsert);
-app.use('/user/update', userUpdate);
-app.use('/user/delete', userDelete);
+app.use('/user', user);
+app.use('/user/cadastrar', userInsert);
+app.use('/user/alterar', userUpdate);
+app.use('/user/buscar', userSearch);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

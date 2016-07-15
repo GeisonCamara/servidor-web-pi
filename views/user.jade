@@ -1,5 +1,16 @@
 extends layout
 
 block content
-   .container
-      h1 = Cadastro de usuários
+   nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand(href='#') WebSiteName
+        ul.nav.navbar-nav
+          li.active
+            a(href='/') Início
+          li
+            a(href='/cadastrar') Cadastrar
+          li
+            a(href='/alterar') Alterar
+          li
+            a(href='/buscar') Buscar

@@ -4,7 +4,7 @@ var lock = require('./../actions/lock.js');
 var sound = require('./../actions/sound.js');
 
 router.get('/', function(req, res, next) {
-  	res.render('index', { title: 'Raspberry PI' });
+  	res.render('index', { title: 'Server Raspberry PI' });
 });
 
 var Gpio = require('onoff').Gpio,
