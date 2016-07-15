@@ -7,13 +7,15 @@ router.get('/', function(req, res, next) {
         if(req.query.user=='all'){
             mongo.find({}, res, function(res, userObj){
                 console.log(userObj);
-                res.sendStatus(200);
+                res.type("text/json");
+                res.send(userObj);
             });
         }
         else {
             mongo.find({name:req.query.user}, res, function(res, userObj){
                 console.log(userObj);
-                res.sendStatus(200);
+                res.type("text/json");
+                res.send(userObj);
             });
         }
     }
