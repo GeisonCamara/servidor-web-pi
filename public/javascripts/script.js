@@ -15,7 +15,7 @@ function clickButton(){
     		setTimeout(function(){
     			$('#button').attr('checked', false);
     			$('#button').prop('disabled', false);
-    		},3000);
+    		},4000);
     	}
 	});
 }
