@@ -48,6 +48,7 @@ header > img{
 
 
 .switch {
+  display: none;
   margin: 50px auto;
   position: relative;
 }
