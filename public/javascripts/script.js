@@ -8,8 +8,12 @@ function showButton(){
 
 function clickButton(){
 	$('#button').click(function(){
-    	var teste = $('#button').is(":checked");
-    	alert(teste);
+    	var state = $('#button').is(":checked");
+    	if(state===true){
+    		setTimeout(function(){
+    			$('#button').attr('checked', false);
+    		},3000);
+    	}
 	});
 }
 
