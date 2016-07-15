@@ -8,7 +8,13 @@ function mongo(){
 }
 
 mongo.prototype.find = function(queryObj, res, callback){
-    users.find(queryObj, function (err, userObj) {
+    if(type == 'historic'){
+        var search = historic;
+    }
+    else if(type == 'user'){
+        var search = users;
+    }
+    search.find(queryObj, function (err, userObj) {
         if(err){
             console.log(err);
         }else if(userObj){
