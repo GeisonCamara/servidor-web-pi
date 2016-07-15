@@ -25,7 +25,7 @@ mongo.prototype.insert = function(newObj, type, callback){
         var newRegister = new historic(newObj);
     }
     else if(type == 'user'){
-        var newRegister = new user(newObj);
+        var newRegister = new users(newObj);
     }
     console.log(newRegister);
     newRegister.save(function (err, userObj) {

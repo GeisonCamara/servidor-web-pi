@@ -4,7 +4,7 @@ var mongo = require('./../../../classes/mongo/mongo.js');
 
 router.post('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
-        var insertObj = {name: "Geison Camara", key: "", mobile: "GC", nfc: "", status: "A"};
+        var insertObj = {name: req.query.user, key: "", mobile: req.query.mobile, nfc: "", status: "A"};
         mongo.insert(insertObj, 'user', function(){});
         res.sendStatus(200);
     }
