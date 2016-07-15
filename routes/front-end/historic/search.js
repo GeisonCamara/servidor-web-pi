@@ -12,7 +12,7 @@ function buildTable(item, all){
 }
 
 router.get('/', function(req, res, next) {
-    mongo.find({}, res, function(res, userObj){
+    mongo.find({}, 'historic', res, function(res, userObj){
         console.log(userObj);
         var result = buildTable(userObj, true);
         res.type("text/html");
