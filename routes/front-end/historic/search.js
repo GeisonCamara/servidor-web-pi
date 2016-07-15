@@ -5,7 +5,7 @@ var mongo = require('./../../../classes/mongo/mongo.js');
 function buildTable(item, all){
     var table = '<table><thead><tr><th>Registro</th><th>Usuário de crack</th><th>Dispositivo</th></tr></thead><tbody>';
     for(var x=0; x<item.length; x++){
-        table += '<tr><th>' + item[x].dateTime + '</th></tr>' + '<tr><th>' + item[x].user + '</th></tr>' + '<tr><th>' + item[x].device + '</th></tr>';
+        table += '<tr><th>' + item[x].dateTime + '</th>' + '<th>' + item[x].user + '</th>' + '<th>' + item[x].device + '</th></tr>';
     }
     table += '</tbody></table>';
     return table;
