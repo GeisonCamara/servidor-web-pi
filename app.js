@@ -9,12 +9,11 @@ var inicio = require('./routes/index');
 var unlock = require('./routes/unlock');
 var authentication = require('./routes/authentication/mobile');
 var historic = require('./routes/front-end/historic/index');
-var user = require('./routes/front-end/user/user');
 var historicSearch = require('./routes/front-end/historic/search');
-var userSearch = require('./routes/front-end/user/search');
+var user = require('./routes/front-end/user/user');
 var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
-
+var userSearch = require('./routes/front-end/user/search');
 
 var app = express();
 
