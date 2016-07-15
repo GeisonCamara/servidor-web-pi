@@ -8,7 +8,7 @@ function mongo(){
 }
 
 mongo.prototype.find = function(queryObj, res, callback){
-    users.findOne(queryObj, function (err, userObj) {
+    users.find(queryObj, function (err, userObj) {
         if(err){
             console.log(err);
         }else if(userObj){
