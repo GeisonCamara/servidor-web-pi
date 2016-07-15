@@ -8,6 +8,14 @@ var bodyParser = require('body-parser');
 var inicio = require('./routes/index');
 var unlock = require('./routes/unlock');
 var authentication = require('./routes/authentication/mobile');
+var historic = require('./routes/front-end/historic/index');
+var user = require('./routes/front-end/user/index');
+var historicSearch = require('./routes/front-end/historic/search');
+var userSearch = require('./routes/front-end/user/search');
+var userInsert = require('./routes/front-end/historic/insert');
+var userUpdate = require('./routes/front-end/historic/update');
+var userDelete = require('./routes/front-end/historic/delete');
+
 
 var app = express();
 
@@ -26,6 +34,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', inicio);
 app.use('/unlock', unlock);
 app.use('/authentication/mobile/', authentication);
+app.use('/user', user);
+app.use('/historic', historic);
+app.use('/user/search', userSearch);
+app.use('/historic/search', historicSearch);
+app.use('/user/insert', userInsert);
+app.use('/user/update', userUpdate);
+app.use('/user/delete', userDelete);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
