@@ -8,8 +8,16 @@ block content
         ul.nav.navbar-nav
           li.active
             a(href='/') Início
-          li
-            a(href='/user') Usuários
+          li.dropdown
+            a.dropdown-toggle(data-toggle='dropdown', href='#') Usuários
+              span.caret
+            ul.dropdown-menu
+              li
+                a(href='/user/cadastrar') Cadastrar
+              li
+                a(href='/user/alterar') Alterar
+              li
+                a(href='/user/search') Buscar
           li
             a(href='/historic') Histórico
     section
