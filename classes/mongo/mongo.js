@@ -7,7 +7,7 @@ function mongo(){
 
 }
 
-mongo.prototype.find = function(queryObj, res, callback){
+mongo.prototype.find = function(queryObj, type, res, callback){
     if(type == 'historic'){
         var search = historic;
     }
