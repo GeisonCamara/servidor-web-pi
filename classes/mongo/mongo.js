@@ -1,10 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authentication');
-<<<<<<< a059f356a48ee520e7bceb2805d49e0b4b2bd4f1
-var users = mongoose.model('users', {name: String, key: String, mobile: String, nfc: String, ativo: String});
-=======
-var users = mongoose.model('user', {name: String, key: String, mobile: String, nfc: String, status: String});
->>>>>>> routes
+var users = mongoose.model('users', {name: String, key: String, mobile: String, nfc: String, status: String});
 var historic = mongoose.model('historic', {dateTime: String, user: String, device: String});
 
 function mongo(){
