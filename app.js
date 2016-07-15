@@ -12,9 +12,9 @@ var historic = require('./routes/front-end/historic/index');
 var user = require('./routes/front-end/user/index');
 var historicSearch = require('./routes/front-end/historic/search');
 var userSearch = require('./routes/front-end/user/search');
-var userInsert = require('./routes/front-end/historic/insert');
-var userUpdate = require('./routes/front-end/historic/update');
-var userDelete = require('./routes/front-end/historic/delete');
+var userInsert = require('./routes/front-end/user/insert');
+var userUpdate = require('./routes/front-end/user/update');
+var userDelete = require('./routes/front-end/user/delete');
 
 
 var app = express();
