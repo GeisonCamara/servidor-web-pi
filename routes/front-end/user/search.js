@@ -4,7 +4,7 @@ var mongo = require('./../../../classes/mongo/mongo.js');
 
 router.get('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
-        mongo.find({user:req.query.user}, res, function(res, userObj){
+        mongo.find({name:req.query.user}, res, function(res, userObj){
             res.sendStatus(200);
         });
     }
