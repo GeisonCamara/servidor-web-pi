@@ -1,6 +1,10 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authentication');
+<<<<<<< a059f356a48ee520e7bceb2805d49e0b4b2bd4f1
 var users = mongoose.model('users', {name: String, key: String, mobile: String, nfc: String, ativo: String});
+=======
+var users = mongoose.model('user', {name: String, key: String, mobile: String, nfc: String, status: String});
+>>>>>>> routes
 var historic = mongoose.model('historic', {dateTime: String, user: String, device: String});
 
 function mongo(){
@@ -20,9 +24,13 @@ mongo.prototype.find = function(queryObj, res, callback){
     });
 }
 
-mongo.prototype.insert = function(newUserObj, callback){
-    var newRegister = new historic(newUserObj);
-    console.log(newUserObj);
+mongo.prototype.insert = function(newObj, type, callback){
+    if(type == 'historic'){
+        var newRegister = new historic(newObj);
+    }
+    else if(type == 'user'){
+        var newRegister = new user(newObj);
+    }
     console.log(newRegister);
     newRegister.save(function (err, userObj) {
         if (err) {

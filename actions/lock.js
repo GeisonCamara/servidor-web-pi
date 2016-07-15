@@ -17,7 +17,7 @@ module.exports = function(device, user){
     
     console.log(insertObj);
 
-    mongo.insert(insertObj, function(){});
+    mongo.insert(insertObj, 'historic', function(){});
     setTimeout(function(){
         lock.writeSync(0);
     },3000);

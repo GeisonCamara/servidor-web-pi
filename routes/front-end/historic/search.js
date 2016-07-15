@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/user/insert', function(req, res, next) {
+router.get('/', function(req, res, next) {
     
 });
 
