@@ -5,3 +5,5 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     res.render('historic', { title: 'Server Raspberry PI' });
 });
+
+module.exports = router;
