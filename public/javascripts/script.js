@@ -7,7 +7,12 @@ function showButton(){
 }
 
 function unlock(){
-	
+	$.ajax({
+		url: "http://192.168.1.154:3000/unlock?key=DD2016TRNEE",
+		success: function(result){
+        	alert(result);
+    	}
+    });
 }
 
 function clickButton(){

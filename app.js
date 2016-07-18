@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 
 var inicio = require('./routes/index');
 var unlock = require('./routes/unlock');
-var authentication = require('./routes/authentication/mobile');
+var mobile = require('./routes/authentication/mobile');
 var historic = require('./routes/front-end/historic/index');
 var historicSearch = require('./routes/front-end/historic/search');
 var userInsert = require('./routes/front-end/user/insert');
@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', inicio);
 app.use('/unlock', unlock);
-app.use('/authentication/mobile/', authentication);
+app.use('/authentication/mobile/', mobile);
 app.use('/historic', historic);
 app.use('/historic/search', historicSearch);
 app.use('/user/cadastrar', userInsert);
