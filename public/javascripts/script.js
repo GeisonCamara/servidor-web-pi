@@ -1,11 +1,15 @@
-var unlock = require('./../../actions/lock.js');
-
 function hideButton(){
 	$('.switch').hide();
 }
 
 function showButton(){
 	$('.switch').fadeIn(1000);
+}
+
+function unlock(){
+	$.ajax({url: "demo_test.txt", success: function(result){
+        alert('Hellow World');
+    }});
 }
 
 function clickButton(){
