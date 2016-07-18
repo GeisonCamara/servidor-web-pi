@@ -7,7 +7,7 @@ module.exports = function(device, user){
     var ano = now.getFullYear();
     var hora = now.getHours()+':'+now.getMinutes()+':'+now.getSeconds();
     var data = dia+'/'+mes+'/'+ano+' - '+hora;
-    if(user=undefined){
+    if(user==undefined){
         user='web';
     }
     var insertObj = {dateTime: data, user: user, device: device};
