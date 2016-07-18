@@ -8,7 +8,7 @@ function showButton(){
 
 function unlock(){
 	$.ajax({
-		url: "../../actions/lock.js",
+		url: "../../actions/arq.js",
 		success: function(result){
         	alert('Hellow World');
     	}
