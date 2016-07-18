@@ -10,7 +10,7 @@ function unlock(){
 	$.ajax({
 		url: "../../actions/arq.js",
 		success: function(result){
-        	alert('Hellow World');
+        	alert(result);
     	}
     });
 }
