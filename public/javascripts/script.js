@@ -7,9 +7,12 @@ function showButton(){
 }
 
 function unlock(){
-	$.ajax({url: "demo_test.txt", success: function(result){
-        alert('Hellow World');
-    }});
+	$.ajax({
+		url: "../../actions/lock.js",
+		success: function(result){
+        	alert('Hellow World');
+    	}
+    });
 }
 
 function clickButton(){
