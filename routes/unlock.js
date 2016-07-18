@@ -4,12 +4,8 @@ var lock = require('./../actions/lock.js');
 var sound = require('./../actions/sound.js');
 var gpio = require('rpi-gpio');
 
-var url = {
-	unlock:"DD2016TRNEE"
-}
-
 router.get('/', function(req, res, next) {
-    if(req.query.key==url.unlock){
+    if(req.query.key=="DD2016TRNEE"){
         lock(req.query.device, req.query.user);
         res.sendStatus(200);
     }

@@ -7,15 +7,14 @@ function showButton(){
 }
 
 function unlock(){
-	$.getScript("pass.js");
+	
 }
 
 function clickButton(){
 	$('#button').click(function(){
     	var state = $('#button').is(":checked");
     	$(this).prop('disabled', true);
-    	var result = unlock();
-    	console.log(result);
+    	unlock();
     	if(state===true){
     		setTimeout(function(){
     			$('#button').attr('checked', false);
