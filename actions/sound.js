@@ -5,6 +5,6 @@ module.exports = function(){
 	music.play();
 
 	setTimeout(function(){
-		music.pause();
+		music.resume();
 	}, 1000);
 }
