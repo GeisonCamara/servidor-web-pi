@@ -6,7 +6,7 @@ block content
         .navbar-header
           a.navbar-brand(href='#') Campainha
         ul.nav.navbar-nav
-          li.active
+          li
             a(href='/') Início
           li.dropdown
             a.dropdown-toggle(data-toggle='dropdown')
@@ -19,10 +19,30 @@ block content
                 a(href='/user/alterar') Alterar
               li
                 a(href='/user/search') Buscar
-          li
+          li.active
             a(href='/historic') Histórico
     section
-      .switch
-        input#button(type='checkbox')
-        label
-          i.icon-off
+      .container-fluid
+        .row
+          .col-sm-1
+          .col-sm-6
+            .panel.panel-default
+              .panel-heading
+                h3 Histórico de acesso
+              .panel-body
+                .form-group
+                  label(for='name') Name:
+                  input#name.form-control(type='text')
+                  br
+                  label(for='pass') Senha:
+                  input#pass.form-control(type='pass')
+                  br
+                  label(for='nfc') NFC:
+                  input#nfc.form-control(type='text')
+              .panel-footer
+          .col-sm-4
+            .switch
+              input#button(type='checkbox')
+              label
+                i.icon-off
+          .col-sm-1
