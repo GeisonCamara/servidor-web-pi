@@ -1,3 +1,5 @@
+var unlock = require('./../../actions/lock.js');
+
 function hideButton(){
 	$('.switch').hide();
 }
@@ -10,7 +12,7 @@ function clickButton(){
 	$('#button').click(function(){
     	var state = $('#button').is(":checked");
     	$(this).prop('disabled', true);
-    	$.getScript("../../actions/lock.js");
+    	unlock();
     	if(state===true){
     		setTimeout(function(){
     			$('#button').attr('checked', false);
