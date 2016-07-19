@@ -3,9 +3,9 @@ var router = express.Router();
 var mongo = require('./../../../classes/mongo/mongo.js');
 
 function buildTable(item, all){
-    var table = '<table><thead><tr><th>Registro</th><th>Usuário</th><th>Dispositivo</th></tr></thead><tbody>';
+    var table = '<table><thead><tr><th>Data</th><th>Horário</th><th>Usuário</th><th>Dispositivo</th></tr></thead><tbody>';
     for(var x=0; x<item.length; x++){
-        table += '<tr><th>' + item[x].dateTime + '</th>' + '<th>' + item[x].user + '</th>' + '<th>' + item[x].device + '</th></tr>';
+        table += '<tr><th>' + item[x].date + '</th>' + '<th>' + item[x].time + '</th>' + '<th>' + item[x].user + '</th>' + '<th>' + item[x].device + '</th></tr>';
     }
     table += '</tbody></table>';
     return table;
