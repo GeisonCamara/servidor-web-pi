@@ -9,10 +9,11 @@ function buildTable(item, all){
     }
     table += '</tr></thead><tbody>';
     for(var x=0; x<item.length; x++){
-        table += '<tr><th>' + item[x].name + '</th></tr>';
+        table += '<tr><th>' + item[x].name + '</th>';
         if(all!=true){
-            table += '<tr><th>' + item[x].key + '</th></tr>' + '<tr><th>' + item[x].nfc + '</th></tr>';
+            table += '<th class=' + item[x].devices[0].status + '>' + item[x].devices[0].value + '</th><th class=' + item[x].devices[1].status + '>' + item[x].devices[1].value + '</th><th class=' + item[x].devices[2].status + '>' + item[x].devices[2].value + '</th>';
         }
+        table += '</tr>';
     }
     table += '</tbody></table>';
     return table;
