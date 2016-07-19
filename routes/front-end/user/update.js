@@ -4,7 +4,7 @@ var mongo = require('./../../../classes/mongo/mongo.js');
 
 router.put('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
-        mongo.update({name: req.query.user}, req, function(userObj, req){
+        mongo.update({name: req.query.user}, 'user', req, function(userObj, req){
             userObj.name = req.query.user;
             userObj.key = req.query.key;
             userObj.nfc = req.query.nfc;

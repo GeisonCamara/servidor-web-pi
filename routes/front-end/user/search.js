@@ -21,7 +21,7 @@ function buildTable(item, all){
 router.get('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
         if(req.query.user=='all'){
-            mongo.find({status: "A"}, res, function(res, userObj){
+            mongo.find({status: "A"}, 'user', res, function(res, userObj){
                 console.log(userObj);
                 var result = buildTable(userObj, true);
                 res.type("text/html");
@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
             });
         }
         else {
-            mongo.find({name:req.query.user, status: "A"}, res, function(res, userObj){
+            mongo.find({name:req.query.user, status: "A"}, 'user', res, function(res, userObj){
                 console.log(userObj);
                 var result = buildTable(userObj, false);
                 res.type("text/html");
