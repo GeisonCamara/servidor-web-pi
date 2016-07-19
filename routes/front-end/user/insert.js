@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
     	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    	var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    	var password = Array.apply(null, Array(5)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
         var insertObj = {name: req.query.user, key: req.query.key, mobile: password, nfc: req.query.nfc, status: "A"};
         mongo.insert(insertObj, 'user', function(){});
         res.sendStatus(200);
