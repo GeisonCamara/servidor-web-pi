@@ -8,7 +8,7 @@ function showButton(){
 
 function unlock(){
 	$.ajax({
-		url: "http://192.168.1.154:3000/unlock?key=DD2016TRNEE&device=web",
+		url: "http://192.168.2.3:3000/unlock?key=DD2016TRNEE&device=web",
 		/*
 		success: function(result){
         	alert(result);
