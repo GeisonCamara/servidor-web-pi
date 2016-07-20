@@ -23,7 +23,9 @@ button.watch(function(err, value){
   	if(value==1){
     	lock('buttonOut', 'Exit button');
   	}
+    setTimeout(function(){},3000);
 });
+
 dingdong.watch(function(err, value){
   	if (err) {
     	throw err;
