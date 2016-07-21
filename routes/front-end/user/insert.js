@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongo = require('./../../../classes/mongo/mongo.js');
+var mongo = require('./../../../classes/mongo.js');
 
 router.get('/', function(req, res, next) {
     res.render('insert', { title: 'Server Raspberry PI' });
