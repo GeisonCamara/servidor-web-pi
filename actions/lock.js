@@ -1,5 +1,5 @@
 module.exports = function(device, user){
-    var mongo = require('./../classes/mongo/mongo.js');
+    var mongo = require('./../classes/mongo.js');
     
     var now = new Date();  
     var dia = now.getDate();

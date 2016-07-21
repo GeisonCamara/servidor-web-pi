@@ -1,6 +1,6 @@
 var express = require('express');
 var Senha = express.Router();
-var Mongo = require("./../../classes/mongo/mongo.js");
+var Mongo = require("./../../classes/mongo.js");
 
 Senha.get('/', function(req, res){
 	console.log(req);
