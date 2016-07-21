@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var lock = require('./../actions/lock.js');
 var sound = require('./../actions/sound.js');
-var sleep = require('sleep');
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Server Raspberry PI' });
