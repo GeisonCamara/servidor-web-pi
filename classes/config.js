@@ -7,6 +7,13 @@ function config(){
         .file({ file: './../config/config.json' });    
 }
 
+config.prototype.setFile = function(config){
+    this.nconf = require('nconf');
+    this.nconf.argv()
+        .env()
+        .file({ file: './../config/config.json' });    
+}
+
 config.prototype.set = function(config, status){
     this.nconf.set(config, status);
     this.nconf.save(function (err) {
