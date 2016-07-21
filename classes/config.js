@@ -11,7 +11,7 @@ function config(){
 
 config.prototype.set = function(config, status){
     nconf.set(config, status);
-    nconf.sqave(function (err) {
+    nconf.save(function (err) {
         //fs.readFile('data.json', function (err, data) {
               //console.dir(JSON.parse(data.toString()))
         //});
@@ -20,7 +20,7 @@ config.prototype.set = function(config, status){
 }
 
 config.prototype.get = function(config){
-    console.log(nconf.get(config));
+    console.log(config);
     return nconf.get(config);
 }
 
