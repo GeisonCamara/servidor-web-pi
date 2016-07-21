@@ -1,6 +1,7 @@
 module.exports = function(){
 	var Sound = require('node-aplay');
-	var music = new Sound('/home/pi/node/trava/dev/servidor-web-pi/media/dingdong.wav');
+	var config = require('./../classes/config');
+	var music = new Sound('/home/pi/node/trava/dev/servidor-web-pi/media/' + config.get('campainha:toque'));
 
 	music.play();
 
