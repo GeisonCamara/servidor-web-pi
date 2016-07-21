@@ -17,8 +17,6 @@ var Gpio = require('onoff').Gpio,
 vcc.writeSync(1);
 rele.writeSync(1);
 
-config();
-
 if(config.get('btnInterno')==1){
     button.watch(function(err, value){
         if (err) {

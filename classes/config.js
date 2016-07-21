@@ -1,10 +1,12 @@
 var fs = require('fs');
 var nconf = require('nconf');
 
+nconf.argv()
+    .env()
+    .file({ file: './../config/config.json' });
+    
 function config(){
-    nconf.argv()
-        .env()
-        .file({ file: './../config/config.json' });
+    
 }
 
 config.prototype.set = function(config, status){
