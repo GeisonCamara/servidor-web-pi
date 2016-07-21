@@ -4,7 +4,7 @@ function config(){
     this.nconf = require('nconf');
     this.nconf.argv()
         .env()
-        .file({ file: './../config/config.json' });    
+        .file({ file: 'config.json' });
 }
 
 config.prototype.setFile = function(config){
