@@ -17,7 +17,14 @@ var Gpio = require('onoff').Gpio,
 vcc.writeSync(1);
 rele.writeSync(1);
 
-if(config.get('btnInterno')==1){
+var nconf = require('nconf');
+nconf.argv()
+    .env()
+    .file({ file: 'data.json' });
+
+
+console.log(nconf.get('btnInterno'));
+if(nconf.get('btnInterno')==1){
     button.watch(function(err, value){
         if (err) {
             throw err;
@@ -28,7 +35,7 @@ if(config.get('btnInterno')==1){
     });
 }
 
-if(config.get('campainha:status')==1){
+if(nconf.get('campainha:status')==1){
     dingdong.watch(function(err, value){
         if (err) {
             throw err;
