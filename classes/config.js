@@ -1,10 +1,10 @@
-var fs = require('fs');
+//var fs = require('fs');
 var nconf = require('nconf');
 
 nconf.argv()
     .env()
     .file({ file: './../config/config.json' });
-    
+
 function config(){
     
 }
@@ -20,6 +20,7 @@ config.prototype.set = function(config, status){
 }
 
 config.prototype.get = function(config){
+    console.log(nconf.get(config));
     return nconf.get(config);
 }
 
