@@ -1,7 +1,7 @@
 var nconf = require('nconf');
 nconf.argv()
     .env()
-    .file({ file: 'data.json' });
+    .file({ file: './../config/data.json' });
 
 function config(){
     
