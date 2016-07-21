@@ -20,7 +20,6 @@ rele.writeSync(1);
 config.set('btnInterno', 1);
 config.set('campainha:status', 1);
 
-console.log(config.get('btnInterno'));
 if(config.get('btnInterno')==1){
     button.watch(function(err, value){
         if (err) {
