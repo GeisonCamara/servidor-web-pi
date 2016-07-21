@@ -12,7 +12,11 @@ var Gpio = require('onoff').Gpio,
     button = new Gpio(21, 'in', 'falling'),
     dingdong = new Gpio(19, 'in', 'falling'),
     vcc = new Gpio(26, 'out'),
+<<<<<<< f7b4a1563a7e3ce722b832bdc66b3cd71141ccce
     rele = new Gpio(16, 'out');    
+=======
+    rele = new Gpio(16, 'out');
+>>>>>>> configurações
 
 vcc.writeSync(1);
 rele.writeSync(1);
@@ -40,17 +44,11 @@ config();
 
 if(config.get('btnInterno')==1){
     button.watch(function(err, value){
-        if(flag){
-            if (err) {
-                throw err;
-            }
-            if(value==1){
-                lock('buttonOut', 'Exit button');
-            }
-            flag = 0;
-            setTimeout(function(){
-                flag = 1;
-            },3100);
+        if (err) {
+            throw err;
+        }
+        if(value==1){
+            lock('buttonOut', 'Exit button');
         }
     });
 }
