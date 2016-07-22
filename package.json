@@ -11,6 +11,7 @@
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "forever": "^0.15.2",
+    "forever-service": "^0.5.7",
     "jade": "~1.11.0",
     "mongo": "^0.1.0",
     "mongodb": "^2.2.0",
