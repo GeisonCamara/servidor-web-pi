@@ -75,7 +75,7 @@ if (app.get('env') === 'development') {
             error: err
         });
         */
-        res.redirect('192.168.1.154:3000');
+        res.redirect('192.168.2.2:3000');
     });
 }
 
@@ -89,7 +89,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
     */
-    res.redirect('192.168.1.154:3000');
+    res.redirect('192.168.2.2:3000');
 });
 
 module.exports = app;
