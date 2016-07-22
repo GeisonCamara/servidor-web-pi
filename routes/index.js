@@ -12,10 +12,12 @@ var Gpio = require('onoff').Gpio,
     button = new Gpio(21, 'in', 'falling'),
     dingdong = new Gpio(19, 'in', 'falling'),
     vcc = new Gpio(26, 'out'),
-    rele = new Gpio(16, 'out');
+    rele = new Gpio(16, 'out'),
+    lock = new Gpio(20, 'out');
 
 vcc.writeSync(1);
 rele.writeSync(1);
+lock.writeSync(0);
 
 if(config.get('btnInterno')==1){
     button.watch(function(err, value){

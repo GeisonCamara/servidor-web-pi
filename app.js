@@ -5,20 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var config = require('./classes/config.js');
-
-config.set('campainha:status', 1);
-config.set('campainha:toque', 'dingdong.wav');
-config.set('btnInterno', 1);
-config.set('nfc', 0);
-config.set('camera', 0);
-config.set('mobile', 0);
-config.set('microfone', 0);
-config.set('touchScreen', 0);
-config.set('historicInterface', 0);
-config.set('userInterface', 0);
-
 var inicio = require('./routes/index');
+var config = require('./routes/configuration');
 var unlock = require('./routes/unlock');
 var mobile = require('./routes/authentication/mobile');
 var historic = require('./routes/front-end/historic/historic');
@@ -42,6 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', inicio);
+app.use('/config', config);
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     app.use('/authentication/mobile/', mobile);
