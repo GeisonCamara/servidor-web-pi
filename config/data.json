@@ -8,5 +8,7 @@
     "btnInterno": 1,
     "mobile": 1,
     "microfone": 0,
-    "touchScreen": 0
+    "touchScreen": 0,
+    "historicInterface": 0,
+    "userInterface": 0
 }
