@@ -21,7 +21,7 @@ vcc.writeSync(1);
 rele.writeSync(1);
 
 if(flag){
-    trava.writeSync(0);
+    unlock.writeSync(0);
     flag = false;
 }
 

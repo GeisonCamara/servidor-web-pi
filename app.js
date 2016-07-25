@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var inicio = require('./routes/index');
-var config = require('./routes/configuration');
+var config = require('./routes/configurations');
 var unlock = require('./routes/unlock');
 var mobile = require('./routes/authentication/mobile');
 var historic = require('./routes/front-end/historic/historic');
