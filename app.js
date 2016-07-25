@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', inicio);
-app.use('/config', config);
+//app.use('/config', config);
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     app.use('/authentication/mobile/', mobile);
