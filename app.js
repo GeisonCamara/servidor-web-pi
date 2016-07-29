@@ -64,7 +64,7 @@ if (app.get('env') === 'development') {
             error: err
         });
         */
-        res.redirect('192.168.2.2:3000');
+        res.redirect('porta.digitaldesk.com.br');
     });
 }
 
@@ -78,7 +78,7 @@ app.use(function(err, req, res, next) {
         error: {}
     });
     */
-    res.redirect('192.168.2.2:3000');
+    res.redirect('porta.digitaldesk.com.br');
 });
 
 module.exports = app;
