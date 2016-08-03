@@ -45,7 +45,7 @@ mongo.prototype.insert = function(newObj, type, callback){
     });
 }
 
-mongo.prototype.update = function(queryObj, req, callback){
+mongo.prototype.update = function(queryObj, type, req, callback){
     users.findOne(queryObj, function (err, userObj) {
         if (err) {
             console.log(err);
