@@ -8,7 +8,7 @@ function mongo(){
 
 }
 
-mongo.prototype.find = function(queryObj, type, res, callback){
+mongo.prototype.find = function(queryObj, type, res, callback, callbackNotFound){
     if(type == 'historic'){
         var search = historic;
     }
@@ -22,7 +22,7 @@ mongo.prototype.find = function(queryObj, type, res, callback){
             callback(res, userObj);
         }else{
             console.log('User not found!');
-            res.sendStatus(404);
+            callbackNotFound();
         }
     });
 }
