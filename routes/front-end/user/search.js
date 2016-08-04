@@ -39,7 +39,9 @@ router.get('/', function(req, res, next) {
         }
     }
     else {
-        res.sendStatus(404);
+        function(req, res){
+            res.sendStatus(404);
+        };
     }
 });
 
