@@ -1,4 +1,4 @@
-v/*ar express = require('express');
+/*var express = require('express');
 var Senha = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 
@@ -17,7 +17,7 @@ module.exports = Senha;*/
 var express = require('express');
 var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
-var requisicao = require('./requisicao.js');
+var requisicao = require('./../front-end/mobile/requisicao.js');
 
 /*Mobile.get('/', function(req, res){
     console.log(req);
@@ -47,7 +47,7 @@ Mobile.put('/', function(req, res){
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
 
-    requisicao.confirmarToken('oauth2/v1/userinfo?access_token=','GET',{tokenGoogle},function(data){
+    requisicao.confirmarToken('oauth2/v1/userinfo?access_token='+tokenGoogle,'GET',{},function(data){
         emailGrupo = '';
         verificarGrupo(req, res, emailGrupo);
     });
@@ -58,9 +58,7 @@ function verificarGrupo(req, res, emailGrupo){
         consultarUsuario(req, res);
     }    
     else {
-        function(req, res){
-            res.sendStatus(404);
-        };
+        res.sendStatus(404);
     }
 }
 

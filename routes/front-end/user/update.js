@@ -14,9 +14,7 @@ router.put('/', function(req, res, next) {
         res.sendStatus(200);
     }
     else {
-        function(req, res){
-            res.sendStatus(404);
-        };
+        res.sendStatus(404);
     }
 });
 
