@@ -3,7 +3,9 @@ var https = require('https');
 
 var host = 'www.googleapis.com';
 
-function confirmarToken(endpoint, method, data, success) {
+var function requisicao(){}
+
+requisicao.prototype.confirmarToken = function(endpoint, method, data, success) {
     var dataString = JSON.stringify(data);
     var headers = {};
   
@@ -42,3 +44,5 @@ function confirmarToken(endpoint, method, data, success) {
     req.write(dataString);
     req.end();
 }
+
+module.exports = new requisicao();
