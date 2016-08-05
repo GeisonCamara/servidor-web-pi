@@ -20,11 +20,11 @@ Mobile.post('/', function(req, res){
         code: tokenGoogle
     }, function(data){
         google.access_token.token = data.access_token;
-        acessarToken();
+        acessarToken(req, res);
     });
 });
 
-function acessarToken(){
+function acessarToken(req, res){
     requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + google.access_token.token, 'GET', {}, function(data){ 
         google.name = data.name;
         google.domain = data.hd;
