@@ -8,7 +8,7 @@ function mongo(){
 
 }
 
-mongo.prototype.find = function(queryObj, type, res, callback){
+mongo.prototype.find = function(queryObj, type, res, callback, callbackNotFound){
     if(type == 'historic'){
         var search = historic;
     }
@@ -22,7 +22,7 @@ mongo.prototype.find = function(queryObj, type, res, callback){
             callback(res, userObj);
         }else{
             console.log('User not found!');
-            res.sendStatus(404);
+            callbackNotFound();
         }
     });
 }
@@ -45,7 +45,7 @@ mongo.prototype.insert = function(newObj, type, callback){
     });
 }
 
-mongo.prototype.update = function(queryObj, req, callback){
+mongo.prototype.update = function(queryObj, type, req, callback){
     users.findOne(queryObj, function (err, userObj) {
         if (err) {
             console.log(err);
