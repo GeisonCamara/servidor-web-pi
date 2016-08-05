@@ -20,10 +20,9 @@ Mobile.post('/', function(req, res){
         code: tokenGoogle
     }, function(data){
         google.access_token.token = data.access_token;
-
         acessarToken();
     });
-}
+});
 
 function acessarToken(){
     requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + google.access_token.token, 'GET', {}, function(data){ 
