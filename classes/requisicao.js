@@ -3,7 +3,7 @@ var https = require('https');
 
 var host = 'www.googleapis.com';
 
-var function requisicao(){}
+function requisicao(){}
 
 requisicao.prototype.requisicaoToken = function(endpoint, method, data, success) {
     var dataString = JSON.stringify(data);
