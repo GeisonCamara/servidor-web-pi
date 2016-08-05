@@ -45,7 +45,7 @@ function verificarGrupo(req, res){
 
 function consultarUsuario(req, res){
     Mongo.find({name: google.name}, 'user', res, function(res, userObj){ 
-        conferirToken(req, res, userObj.devices[1].value);
+        conferirToken(req, res, userObj.devices.value);
     },function(req, res){
         cadastrarUsuario(req, res);
     });
@@ -70,7 +70,7 @@ function conferirToken(req, res, token){
 
 function atualizarToken(req, res){
     Mongo.update({name: google.name}, 'user', req, function(userObj, req){
-        userObj.devices[1].value = google.access_token.token;
+        userObj.devices.value = google.access_token.token;
         return userObj;
     });
     res.type('json');
