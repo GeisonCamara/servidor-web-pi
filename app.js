@@ -14,7 +14,7 @@ var historicSearch = require('./routes/front-end/historic/search');
 var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
-var userMobile = require('./routes/front-end/mobile/abrirPorta.js');
+var abrirPorta = require('./routes/authentication/abrirPorta.js');
 
 var app = express();
 
@@ -35,7 +35,7 @@ app.use('/', inicio);
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     /*app.use('/authentication/mobile/', mobile);*/
-    app.use('/AbrirPortar', userMobile);
+    app.use('/AbrirPorta', abrirPorta);
     app.use('/Autenticar', mobile);
 }
 if(config.get('historicInterface')){
