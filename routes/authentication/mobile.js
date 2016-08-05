@@ -39,6 +39,7 @@ function verificarGrupo(req, res){
     else {
         /*res.type('json');
         res.send(var empty = {});*/
+        console.log('email inválido');
         res.sendStatus(404);
     }
 }
