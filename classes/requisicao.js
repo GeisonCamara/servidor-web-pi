@@ -14,7 +14,7 @@ requisicao.prototype.requisicaoToken = function(endpoint, method, data, success)
     }
     else {
         headers = {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'x-www-form-urlencoded',
         'Content-Length': dataString.length
         };
     }
