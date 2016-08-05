@@ -47,8 +47,23 @@ Mobile.put('/', function(req, res){
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
 
-    requisicao.confirmarToken('oauth2/v1/userinfo?access_token='+tokenGoogle,'GET',{},function(data){
-        emailGrupo = '';
+    requisicao.requisicaoToken('/oauth2/v4/token', 'POST', {
+        grant_type: 'authorization_code',
+        client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
+        client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
+        redirect_uri: '',
+        code: tokenGoogle
+    }, function(data){
+        var access_token = data.access_token;
+
+        acessarToken(access_token);
+    });
+}
+
+function acessarToken(access_token){
+    requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + access_token, 'GET', {}, function(data){
+        var emailGrupo = data.hd; 
+
         verificarGrupo(req, res, emailGrupo);
     });
 }

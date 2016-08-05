@@ -5,7 +5,7 @@ var host = 'www.googleapis.com';
 
 var function requisicao(){}
 
-requisicao.prototype.confirmarToken = function(endpoint, method, data, success) {
+requisicao.prototype.requisicaoToken = function(endpoint, method, data, success) {
     var dataString = JSON.stringify(data);
     var headers = {};
   
@@ -14,7 +14,7 @@ requisicao.prototype.confirmarToken = function(endpoint, method, data, success) 
     }
     else {
         headers = {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
         'Content-Length': dataString.length
         };
     }
