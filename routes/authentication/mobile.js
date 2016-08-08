@@ -48,7 +48,7 @@ Mobile.post('/', function(req, res){
                 //console.log(response.statusCode);    
             }
         }
-    })
+    )
 });
 
 function acessarToken(req, res){
@@ -72,7 +72,7 @@ function acessarToken(req, res){
                 console.log('failfail');
             }
         }
-    })
+    )
 }
 
 function verificarGrupo(req, res){
