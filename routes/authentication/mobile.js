@@ -1,7 +1,7 @@
 var express = require('express');
 var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
-var requisicao = require('./../../classes/requisicao.js');
+//var requisicao = require('./../../classes/requisicao.js');
 var request = require('request');
 
 var google = {
@@ -29,7 +29,9 @@ Mobile.post('/', function(req, res){
                 client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
                 client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
                 redirect_uri: '',
-                code: tokenGoogle}
+                code: tokenGoogle};
+                
+    console.log(tokenGoogle);
 
     request({
         uri:"www.googleapis.com/oauth2/v4/token",
@@ -38,23 +40,38 @@ Mobile.post('/', function(req, res){
         body:body},
         function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            console.log('ok')
+            console.log('ok');
             google.access_token.token = data.access_token;
             acessarToken(req, res);
         }
         else{
-            console.log('fail')
+            console.log('fail');
         }
     }
 
 });
 
 function acessarToken(req, res){
-    requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + google.access_token.token, 'GET', {}, function(data){ 
+    /*requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + google.access_token.token, 'GET', {}, function(data){ 
         google.name = data.name;
         google.domain = data.hd;
         verificarGrupo(req, res);
-    });
+    });*/
+
+     request({
+        uri:"www.googleapis.com/oauth2/v1/userinfo?access_token=" + google.access_token.token,
+        method:'GET'},
+        function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('okok');
+            google.name = data.name;
+            google.domain = data.hd;
+            verificarGrupo(req, res);
+        }
+        else{
+            console.log('failfail');
+        }
+    }
 }
 
 function verificarGrupo(req, res){
