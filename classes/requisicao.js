@@ -1,4 +1,4 @@
-var querystring = require('querystring');
+/*var querystring = require('querystring');
 var https = require('https');
 
 var host = 'www.googleapis.com';
@@ -45,4 +45,4 @@ requisicao.prototype.requisicaoToken = function(endpoint, method, data, success)
     req.end();
 }
 
-module.exports = new requisicao();
+module.exports = new requisicao();*/
