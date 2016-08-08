@@ -24,7 +24,7 @@ Mobile.post('/', function(req, res){
         acessarToken(req, res);
     });*/
 
-    var headers = {"Content-Type":"x-www-form-urlencoded"};
+    var headers = {};
     var body = {grant_type: 'authorization_code',
                 client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
                 client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
@@ -37,7 +37,7 @@ Mobile.post('/', function(req, res){
         uri:"www.googleapis.com/oauth2/v4/token",
         method:'POST',
         headers:headers,
-        body:body},
+        form:body},
         function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('ok');
@@ -45,9 +45,7 @@ Mobile.post('/', function(req, res){
             acessarToken(req, res);
         }
         else{
-            console.log('fail');
-            console.log(response);
-            console.log(body);            
+            console.log('fail');        
         }
     });
 });
