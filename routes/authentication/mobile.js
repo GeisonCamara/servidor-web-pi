@@ -45,7 +45,8 @@ Mobile.post('/', function(req, res){
             acessarToken(req, res);
         }
         else{
-            console.log('fail');        
+            console.log('fail'); 
+            console.log(response.statusCode);    
         }
     });
 });
