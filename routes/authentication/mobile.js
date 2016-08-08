@@ -46,6 +46,7 @@ Mobile.post('/', function(req, res){
         }
         else{
             console.log('fail');
+            console.log(req);
         }
     });
 });
