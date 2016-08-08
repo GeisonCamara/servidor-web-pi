@@ -2,6 +2,7 @@ var express = require('express');
 var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var requisicao = require('./../../classes/requisicao.js');
+var request = require('request');
 
 var google = {
     name: '',
@@ -12,7 +13,7 @@ var google = {
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
 
-    requisicao.requisicaoToken('/oauth2/v4/token', 'POST', {
+    /*requisicao.requisicaoToken('/oauth2/v4/token', 'POST', {
         grant_type: 'authorization_code',
         client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
         client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
@@ -21,7 +22,31 @@ Mobile.post('/', function(req, res){
     }, function(data){
         google.access_token.token = data.access_token;
         acessarToken(req, res);
-    });
+    });*/
+
+    var headers = {"Content-Type":"x-www-form-urlencoded"};
+    var body = {grant_type: 'authorization_code',
+                client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
+                client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
+                redirect_uri: '',
+                code: tokenGoogle}
+
+    request({
+        uri:"www.googleapis.com/oauth2/v4/token",
+        method:'POST',
+        headers:headers,
+        body:body},
+        function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('ok')
+            google.access_token.token = data.access_token;
+            acessarToken(req, res);
+        }
+        else{
+            console.log('fail')
+        }
+    }
+
 });
 
 function acessarToken(req, res){
