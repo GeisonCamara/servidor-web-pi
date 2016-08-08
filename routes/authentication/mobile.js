@@ -30,7 +30,7 @@ Mobile.post('/', function(req, res){
                 client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
                 redirect_uri: '',
                 code: tokenGoogle};
-                
+
     console.log(tokenGoogle);
 
     request({
@@ -41,14 +41,13 @@ Mobile.post('/', function(req, res){
         function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('ok');
-            google.access_token.token = data.access_token;
+            google.access_token.token = body.access_token;
             acessarToken(req, res);
         }
         else{
             console.log('fail');
         }
-    }
-
+    });
 });
 
 function acessarToken(req, res){
@@ -64,14 +63,14 @@ function acessarToken(req, res){
         function (error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('okok');
-            google.name = data.name;
-            google.domain = data.hd;
+            google.name = body.name;
+            google.domain = body.hd;
             verificarGrupo(req, res);
         }
         else{
             console.log('failfail');
         }
-    }
+    });
 }
 
 function verificarGrupo(req, res){
