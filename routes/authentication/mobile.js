@@ -33,9 +33,8 @@ Mobile.post('/', function(req, res){
 
     console.log(tokenGoogle);
 
-    request({
-        uri:"www.googleapis.com/oauth2/v4/token",
-        method:'POST',
+    request.post({
+        url:"www.googleapis.com/oauth2/v4/token",
         headers:headers,
         form:body},
         function (error, response, body) {
