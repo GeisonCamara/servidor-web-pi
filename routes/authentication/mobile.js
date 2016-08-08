@@ -38,15 +38,16 @@ Mobile.post('/', function(req, res){
         headers:headers,
         form:body},
         function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log('ok');
-            //google.access_token.token = body.access_token;
-            //acessarToken(req, res);
-        }
-        else{
-            console.log('fail'); 
-            //console.log(response.statusCode);    
-        }
+            if (!error && response.statusCode == 200) {
+                console.log('ok');
+                //google.access_token.token = body.access_token;
+                //acessarToken(req, res);
+            }
+            else{
+                console.log('fail'); 
+                //console.log(response.statusCode);    
+            }
+        };
     });
 });
 
@@ -57,18 +58,19 @@ function acessarToken(req, res){
         verificarGrupo(req, res);
     });*/
 
-     request({
+    request({
         uri:"www.googleapis.com/oauth2/v1/userinfo?access_token=" + google.access_token.token,
         method:'GET'},
         function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            console.log('okok');
-            google.name = body.name;
-            google.domain = body.hd;
-            verificarGrupo(req, res);
-        }
-        else{
-            console.log('failfail');
+            if (!error && response.statusCode == 200) {
+                console.log('okok');
+                google.name = body.name;
+                google.domain = body.hd;
+                verificarGrupo(req, res);
+            }
+            else{
+                console.log('failfail');
+            }
         }
     });
 }
