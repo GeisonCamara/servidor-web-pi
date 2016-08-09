@@ -40,11 +40,11 @@ Mobile.post('/', function(req, res){
     }, function (error, response, body) {
         //if (!error && response.statusCode == 200) {
             console.log('');
-            console.log('Error:' + JSON.stringify(error));
+            console.log('Error:' + error);
             console.log('');
-            console.log('Response: ' + JSON.stringify(response));
+            console.log('Response: ' + response);
             console.log('');
-            console.log('Body: ' + JSON.stringify(body));
+            console.log('Body: ' + body);
             console.log('');
             console.log('END');
             /*google.access_token.token = body.access_token;
