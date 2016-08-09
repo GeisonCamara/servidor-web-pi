@@ -13,7 +13,7 @@ Mobile.post('/', function(req, res){
                 redirect_uri: '',
                 code: tokenGoogle};
 
-    console.log('código pra pegar o token - 'tokenGoogle);
+    console.log('código pra pegar o token - '+ tokenGoogle);
     request.post({
         url:"https://www.googleapis.com/oauth2/v4/token",
         headers:headers,
