@@ -76,15 +76,15 @@ function consultarUsuario(req, res, access_token, name){
 function cadastrarUsuario(req, res, access_token, name){
     var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: access_token, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(){}) ;
-    res.type('json');
-    res.send(access_token);
+    //res.type('json');
+    //res.send(access_token);
     console.log('usuario cadastrado');
 }
 
 function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
-        res.type('json');
-        res.send(access_token);
+        //res.type('json');
+       // res.send(access_token);
         console.log('token okay');
     }
     else {
@@ -98,8 +98,8 @@ function atualizarToken(req, res, access_token, name){
         return userObj;
     });
     console.log('token atualizado');
-    res.type('json');
-    res.send(access_token);
+    //res.type('json');
+    //res.send(access_token);
 }
 
 module.exports = Mobile;
