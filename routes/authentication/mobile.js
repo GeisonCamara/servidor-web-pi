@@ -38,22 +38,14 @@ Mobile.post('/', function(req, res){
         headers:headers,
         form:body
     }, function (error, response, body) {
-        //if (!error && response.statusCode == 200) {
-            console.log('');
-            console.log('Error:' + error);
-            console.log('');
-            console.log('Response: ' + response);
-            console.log('');
-            console.log('Body: ' + body);
-            console.log('');
-            console.log('END');
-            /*google.access_token.token = body.access_token;
-            acessarToken(req, res);*/
-       /* }
+        if (!error && response.statusCode == 200) {
+            google.access_token.token = body.access_token;
+            console.log( 'okay - token: ' + google.access_token.token);
+            acessarToken(req, res);
+        }
         else{
-            console.log('fail'); 
-            console.log(response.statusCode);
-        }*/
+            console.log('fail na primeira requisição'); 
+        }
     });
 });
 
@@ -65,17 +57,17 @@ function acessarToken(req, res){
     });*/
 
     request({
-        uri:"www.googleapis.com/oauth2/v1/userinfo?access_token=" + google.access_token.token,
+        uri:"https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + google.access_token.token,
         method:'GET'},
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                console.log('okok');
                 google.name = body.name;
                 google.domain = body.hd;
+                console.log('nome - ' + google.nam + 'dominio - ' + google.domain);
                 verificarGrupo(req, res);
             }
             else{
-                console.log('failfail');
+                console.log('fail na segunda requisição');
             }
         }
     )
@@ -84,6 +76,7 @@ function acessarToken(req, res){
 function verificarGrupo(req, res){
     if (google.domain == "digitaldesk.com.br") {
         consultarUsuario(req, res);
+        console.log('e-mail valido');
     }    
     else {
         /*res.type('json');
@@ -96,8 +89,10 @@ function verificarGrupo(req, res){
 function consultarUsuario(req, res){
     Mongo.find({name: google.name}, 'user', res, function(res, userObj){ 
         conferirToken(req, res, userObj.devices[1].value);
+        console.log('usuario encontrado');
     },function(req, res){
         cadastrarUsuario(req, res);
+        console.log('usuario não encontrado');
     });
 }
 
@@ -106,12 +101,14 @@ function cadastrarUsuario(req, res){
     Mongo.insert(insertObj, 'user', function(){}) ;
     res.type('json');
     res.send(google.access_token);
+    console.log('usuario cadastrado');
 }
 
 function conferirToken(req, res, token){
     if(google.access_token.token==token){
         res.type('json');
         res.send(google.access_token);
+        console.log('token okay');
     }
     else {
         atualizarToken(req, res);
@@ -123,6 +120,7 @@ function atualizarToken(req, res){
         userObj.devices[1].value = google.access_token.token;
         return userObj;
     });
+    console.log('token atualizado');
     res.type('json');
     res.send(google.access_token);
 }
