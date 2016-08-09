@@ -20,10 +20,9 @@ Mobile.post('/', function(req, res){
         form:body
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            var access_token = body.access_token;
             var parse = JSON.parse(body);
-            console.log('array' + parse.access_token);
-            console.log( 'okay - token: ' + body["access_token"]);
+            var access_token = parse.access_token;
+            console.log( 'okay - token: ' + access_token);
             acessarToken(req, res, access_token);
         }
         else{
