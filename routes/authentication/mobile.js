@@ -38,15 +38,15 @@ Mobile.post('/', function(req, res){
         headers:headers,
         form:body},
         function (error, response, body) {
-            if (!error && response.statusCode == 200 || response.statusCode == 302) {
+            //if (!error && response.statusCode == 200) {
                 console.log('ok');
                 google.access_token.token = body.access_token;
                 acessarToken(req, res);
-            }
+           /* }
             else{
                 console.log('fail'); 
                 console.log(response.statusCode);    
-            }
+            }*/
         }
     )
 });
