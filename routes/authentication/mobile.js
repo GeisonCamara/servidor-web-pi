@@ -21,9 +21,8 @@ Mobile.post('/', function(req, res){
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
             var access_token = body.access_token;
-            console.log(body[0]);
-            console.log(body.access_token);
-            console.log( 'okay - token: ' + access_token);
+            console.log('array' + body[0]);
+            console.log( 'okay - token: ' + body["access_token"]);
             acessarToken(req, res, access_token);
         }
         else{
