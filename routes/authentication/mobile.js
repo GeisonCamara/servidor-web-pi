@@ -4,26 +4,8 @@ var Mongo = require("./../../classes/mongo.js");
 //var requisicao = require('./../../classes/requisicao.js');
 var request = require('request');
 
-var google = {
-    name: '',
-    domain: '',
-    access_token: {token: ''}
-};
-
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
-
-    /*requisicao.requisicaoToken('/oauth2/v4/token', 'POST', {
-        grant_type: 'authorization_code',
-        client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
-        client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
-        redirect_uri: '',
-        code: tokenGoogle
-    }, function(data){
-        google.access_token.token = data.access_token;
-        acessarToken(req, res);
-    });*/
-
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
     var body = {grant_type: 'authorization_code',
                 client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
@@ -32,16 +14,15 @@ Mobile.post('/', function(req, res){
                 code: tokenGoogle};
 
     console.log(tokenGoogle);
-
     request.post({
         url:"https://www.googleapis.com/oauth2/v4/token",
         headers:headers,
         form:body
     }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
-            google.access_token.token = body.access_token;
-            console.log( 'okay - token: ' + google.access_token.token);
-            acessarToken(req, res);
+            var access_token = body.access_token;
+            console.log( 'okay - token: ' + access_token);
+            acessarToken(req, res, access_token);
         }
         else{
             console.log('fail na primeira requisição'); 
@@ -49,22 +30,16 @@ Mobile.post('/', function(req, res){
     });
 });
 
-function acessarToken(req, res){
-    /*requisicao.requisicaoToken('/oauth2/v1/userinfo?access_token=' + google.access_token.token, 'GET', {}, function(data){ 
-        google.name = data.name;
-        google.domain = data.hd;
-        verificarGrupo(req, res);
-    });*/
-
+function acessarToken(req, res, access_token){
     request({
-        uri:"https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + google.access_token.token,
+        uri:"https://www.googleapis.com/oauth2/v1/userinfo?access_token=" + access_token,
         method:'GET'},
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                google.name = body.name;
-                google.domain = body.hd;
-                console.log('nome - ' + google.nam + 'dominio - ' + google.domain);
-                verificarGrupo(req, res);
+                var name = body.name;
+                var domain = body.hd;
+                console.log('nome - ' + name + 'dominio - ' + domain);
+                verificarGrupo(req, res, access_token, name, domain);
             }
             else{
                 console.log('fail na segunda requisição');
@@ -73,9 +48,9 @@ function acessarToken(req, res){
     )
 }
 
-function verificarGrupo(req, res){
-    if (google.domain == "digitaldesk.com.br") {
-        consultarUsuario(req, res);
+function verificarGrupo(req, res, access_token, name, domain){
+    if (domain == "digitaldesk.com.br") {
+        consultarUsuario(req, res, access_token, name);
         console.log('e-mail valido');
     }    
     else {
@@ -86,43 +61,43 @@ function verificarGrupo(req, res){
     }
 }
 
-function consultarUsuario(req, res){
-    Mongo.find({name: google.name}, 'user', res, function(res, userObj){ 
-        conferirToken(req, res, userObj.devices[1].value);
+function consultarUsuario(req, res, access_token, name){
+    Mongo.find({name: name}, 'user', res, function(res, userObj){ 
+        conferirToken(req, res, userObj.devices[1].value, , access_token, name);
         console.log('usuario encontrado');
     },function(req, res){
-        cadastrarUsuario(req, res);
+        cadastrarUsuario(req, res, access_token, name);
         console.log('usuario não encontrado');
     });
 }
 
-function cadastrarUsuario(req, res){
-    var insertObj = {name: req.query.name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: google.access_token.token, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
+function cadastrarUsuario(req, res, access_token, name){
+    var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: access_token, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(){}) ;
     res.type('json');
-    res.send(google.access_token);
+    res.send(access_token);
     console.log('usuario cadastrado');
 }
 
-function conferirToken(req, res, token){
-    if(google.access_token.token==token){
+function conferirToken(req, res, token, access_token, name){
+    if(access_token==token){
         res.type('json');
-        res.send(google.access_token);
+        res.send(access_token);
         console.log('token okay');
     }
     else {
-        atualizarToken(req, res);
+        atualizarToken(req, res, access_token, name);
     }
 }
 
-function atualizarToken(req, res){
-    Mongo.update({name: google.name}, 'user', req, function(userObj, req){
-        userObj.devices[1].value = google.access_token.token;
+function atualizarToken(req, res, access_token, name){
+    Mongo.update({name: name}, 'user', req, function(userObj, req){
+        userObj.devices[1].value = access_token;
         return userObj;
     });
     console.log('token atualizado');
     res.type('json');
-    res.send(google.access_token);
+    res.send(access_token);
 }
 
 module.exports = Mobile;
