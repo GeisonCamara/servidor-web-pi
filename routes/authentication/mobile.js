@@ -37,9 +37,10 @@ function acessarToken(req, res, access_token){
         method:'GET'},
         function (error, response, body) {
             if (!error && response.statusCode == 200) {
-                var name = body.name;
-                var domain = body.hd;
-                console.log('nome - ' + name + 'dominio - ' + domain);
+                var parse = JSON.parse(body);
+                var name = parse.name;
+                var domain = parse.hd;
+                console.log('nome - ' + name + ' dominio - ' + domain);
                 verificarGrupo(req, res, access_token, name, domain);
             }
             else{
