@@ -13,7 +13,7 @@ Mobile.post('/', function(req, res){
                 redirect_uri: '',
                 code: tokenGoogle};
 
-    console.log(tokenGoogle);
+    console.log('código pra pegar o token - 'tokenGoogle);
     request.post({
         url:"https://www.googleapis.com/oauth2/v4/token",
         headers:headers,
@@ -64,12 +64,13 @@ function verificarGrupo(req, res, access_token, name, domain){
 }
 
 function consultarUsuario(req, res, access_token, name){
-    Mongo.find({name: name}, 'user', res, function(res, userObj){ 
-        conferirToken(req, res, userObj.devices[1].value, access_token, name);
+    Mongo.find({name: name}, 'user', res, function(res, userObj){
+        var token = userObj.devices[1].value; 
+        conferirToken(req, res, token, access_token, name);
         console.log('usuario encontrado');
     },function(req, res){
-        cadastrarUsuario(req, res, access_token, name);
         console.log('usuario não encontrado');
+        cadastrarUsuario(req, res, access_token, name);
     });
 }
 
@@ -84,7 +85,7 @@ function cadastrarUsuario(req, res, access_token, name){
 function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
         //res.type('json');
-       // res.send(access_token);
+        // res.send(access_token);
         console.log('token okay');
     }
     else {
