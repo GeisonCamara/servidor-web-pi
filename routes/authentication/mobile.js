@@ -63,7 +63,7 @@ function verificarGrupo(req, res, access_token, name, domain){
 
 function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){ 
-        conferirToken(req, res, userObj.devices[1].value, , access_token, name);
+        conferirToken(req, res, userObj.devices[1].value, access_token, name);
         console.log('usuario encontrado');
     },function(req, res){
         cadastrarUsuario(req, res, access_token, name);
