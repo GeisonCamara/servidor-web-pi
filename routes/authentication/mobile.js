@@ -36,19 +36,25 @@ Mobile.post('/', function(req, res){
     request.post({
         url:"www.googleapis.com/oauth2/v4/token",
         headers:headers,
-        form:body},
-        function (error, response, body) {
-            //if (!error && response.statusCode == 200) {
-                console.log('ok');
-                /*google.access_token.token = body.access_token;
-                acessarToken(req, res);*/
-           /* }
-            else{
-                console.log('fail'); 
-                console.log(response.statusCode);    
-            }*/
-        }
-    )
+        form:body
+    }, function (error, response, body) {
+        //if (!error && response.statusCode == 200) {
+            console.log('');
+            console.log('Error:' + JSON.stringify(error));
+            console.log('');
+            console.log('Response: ' + JSON.stringify(response));
+            console.log('');
+            console.log('Body: ' + JSON.stringify(body));
+            console.log('');
+            console.log('END');
+            /*google.access_token.token = body.access_token;
+            acessarToken(req, res);*/
+       /* }
+        else{
+            console.log('fail'); 
+            console.log(response.statusCode);
+        }*/
+    });
 });
 
 function acessarToken(req, res){
