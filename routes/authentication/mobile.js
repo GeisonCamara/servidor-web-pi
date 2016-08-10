@@ -101,7 +101,6 @@ function atualizarToken(req, res, access_token, name){
     console.log('token atualizado');
     //res.type('json');
     res.send('foi');
-    res.send(true);
     res.send(access_token);
 }
 
