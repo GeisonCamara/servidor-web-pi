@@ -66,7 +66,7 @@ function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
         console.log('usuario encontrado');
         //console.log('value - ' + userObj.devices[1].value);
-        console.log('device - ' + userObj.devices[1]);
+        console.log('device - ' + userObj.devices);
         var token = userObj.devices[1].value;
         conferirToken(req, res, token, access_token, name);
     },function(req, res){
