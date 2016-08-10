@@ -66,8 +66,7 @@ function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
         console.log('usuario encontrado');
         console.log('value - ' + JSON.stringify(userObj[0].devices[1].value));
-        console.log('device - ' + userObj.devices[1]);
-        var token = userObj.devices[1].value;
+        var token = userObj[0].devices[1].value;
         conferirToken(req, res, token, access_token, name);
     },function(req, res){
         console.log('usuario não encontrado');
@@ -96,7 +95,7 @@ function conferirToken(req, res, token, access_token, name){
 
 function atualizarToken(req, res, access_token, name){
     Mongo.update({name: name}, 'user', req, function(userObj, req){
-        userObj.devices[1].value = access_token;
+        userObj[0].devices[1].value = access_token;
         console.log(userObj.devices[1].value);
         return userObj;
     });
