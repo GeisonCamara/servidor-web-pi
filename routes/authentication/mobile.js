@@ -99,9 +99,7 @@ function atualizarToken(req, res, access_token, name){
         return userObj;
     });
     console.log('token atualizado');
-    //res.type('json');
-    res.send('foi');
-    res.send(access_token);
+    res.send({ sucuesso: true, token: access_token });
 }
 
 module.exports = Mobile;
