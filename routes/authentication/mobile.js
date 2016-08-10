@@ -100,7 +100,7 @@ function atualizarToken(req, res, access_token, name){
     });
     console.log('token atualizado');
     //res.type('json');
-    //res.send(access_token);
+    res.send('foi');
 }
 
 module.exports = Mobile;
