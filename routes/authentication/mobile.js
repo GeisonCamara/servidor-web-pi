@@ -95,8 +95,7 @@ function conferirToken(req, res, token, access_token, name){
 
 function atualizarToken(req, res, access_token, name){
     Mongo.update({name: name}, 'user', req, function(userObj, req){
-        userObj[0].devices[1].value = access_token;
-        console.log(userObj[0].devices[1].value);
+        userObj.devices[1].value = access_token;
         return userObj;
     });
     console.log('token atualizado');
