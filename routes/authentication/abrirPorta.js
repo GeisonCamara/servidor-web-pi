@@ -7,9 +7,9 @@ token.post('/', function(req, res){
     var tokenGoogle = req.query.token;
     Mongo.find({devices: { $elemMatch: { value: tokenGoogle } }}, 'user', res, function(res, userObj){
     	lock('mobile', req.query.user);
-    	//retornar algo pro front
+    	res.send({ status: true});
     },function(req, res){
-        res.sendStatus(404);
+        res.send({ status: false});
     });
 });
 
