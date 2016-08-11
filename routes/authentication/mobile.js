@@ -93,10 +93,10 @@ function atualizarToken(req, res, access_token, name){
     Mongo.update({name: name}, 'user', req, function(userObj, req){
         userObj.devices[1].value = access_token;
         return userObj;
+        console.log('token atualizado');
+        console.log(access_token);
+        console.log(userObj.devices[1].value);
     });
-    console.log('token atualizado');
-    console.log(access_token);
-    console.log(userObj.devices[1].value);
     res.send({status: true, token: access_token});
 }
 
