@@ -52,7 +52,7 @@ mongo.prototype.update = function(queryObj, type, req, callback){
         } else if (userObj) {
             console.log('Found:', JSON.stringify(userObj));
             userObj = callback(userObj, req);
-            console.log('callback - 'JSON.stringify(userObj));
+            console.log('callback - '+JSON.stringify(userObj));
             userObj.save(function (err) {
                 if (err) {
                     console.log(err);
