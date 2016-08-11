@@ -65,7 +65,7 @@ function consultarUsuario(req, res, access_token, name){
         console.log('usuario encontrado');
         console.log('token no banco - ' + JSON.stringify(userObj[0].devices[1].value));
         var token = userObj[0].devices[1].value;
-        conferirToken(req, res, token, access_token, name, userObj);
+        conferirToken(req, res, token, access_token, name);
     },function(req, res){
         console.log('usuario não encontrado');
         cadastrarUsuario(req, res, access_token, name);
@@ -79,32 +79,19 @@ function cadastrarUsuario(req, res, access_token, name){
     console.log('usuario cadastrado');
 }
 
-function conferirToken(req, res, token, access_token, name, userObj){
+function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
         res.send({status: true, token: access_token});
         console.log('token correto');
     }
     else {
-        atualizarToken(req, res, access_token, name, userObj);
+        atualizarToken(req, res, access_token, name);
     }
 }
-
-/*
-function atualizarToken(req, res, access_token, name, userObj){
-    Mongo.update({name: name}, {$set: {userObj.devices[1].value: access_token}} function(userObj, req){
-        console.log('token atualizado');
-        console.log(userObj.devices[1].value);
-        return userObj;
-    });
-    res.send({status: true, token: access_token});
-}*/
 
 function atualizarToken(req, res, access_token, name){
     Mongo.update({name: name}, 'user', req, function(userObj, req){
         userObj.devices[1].value = access_token;
-        console.log('token atualizado');
-        console.log(access_token);
-        console.log(userObj.devices[1].value);
         return userObj;
     });
     res.send({status: true, token: access_token});
