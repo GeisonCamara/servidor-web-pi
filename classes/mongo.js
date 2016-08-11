@@ -56,7 +56,7 @@ mongo.prototype.update = function(queryObj, type, req, callback){
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log('Updated', userObj);
+                    console.log('Updated', JSON.stringify(userObj));
                 }
             });
         } else {
