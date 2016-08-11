@@ -94,7 +94,7 @@ function atualizarToken(req, res, access_token, name){
         userObj.devices[1].value = access_token;
         console.log('token atualizado');
         console.log(access_token);
-        console.log(userObj[0].devices;
+        console.log(userObj[0].devices);
         return userObj;
     });
     res.send({status: true, token: access_token});
