@@ -63,7 +63,7 @@ function verificarGrupo(req, res, access_token, name, domain){
 function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
         console.log('usuario encontrado');
-        console.log('value - ' + JSON.stringify(userObj[0].devices[1].value));
+        console.log('token no banco - ' + JSON.stringify(userObj[0].devices[1].value));
         var token = userObj[0].devices[1].value;
         conferirToken(req, res, token, access_token, name);
     },function(req, res){
@@ -96,6 +96,7 @@ function atualizarToken(req, res, access_token, name){
     });
     console.log('token atualizado');
     console.log(access_token);
+    console.log(userObj.devices[1].value);
     res.send({status: true, token: access_token});
 }
 
