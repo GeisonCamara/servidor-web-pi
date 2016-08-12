@@ -55,7 +55,6 @@ mongo.prototype.update = function(name, access_token, callback){
             userObj.devices[1].value = access_token;
             console.log('Token inserido' + JSON.stringify(userObj.devices[1].value));
             //userObj = callback(userObj, req);
-            /*
             userObj.save(function (err) {
                 if (err) {
                     console.log(err);
@@ -63,7 +62,6 @@ mongo.prototype.update = function(name, access_token, callback){
                     console.log('Updated', userObj);
                 }
             });
-            */
         } else {
             console.log('User not found!');
         }
