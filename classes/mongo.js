@@ -55,7 +55,7 @@ mongo.prototype.update = function(name, access_token, callback){
             //userObj.devices[1].value = access_token;
             console.log('Token inserido' + JSON.stringify(userObj.devices[1].value));
             //userObj = callback(userObj, req);
-            users.update({devices[1].value : access_token}, function (err, token) {
+            users.update({userObj.devices[1].value = access_token}, function (err, token) {
                 if (err) {
                     console.log(err);
                 } else {
