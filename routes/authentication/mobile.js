@@ -93,20 +93,19 @@ function conferirToken(req, res, token, access_token, name){
     Mongo.update({name: name}, 'user', req, {$set: {userObj.devices[1].value: access_token}}, function(userObj, req){
         userObj.devices[1].value = access_token;
         //console.log('token no banco atualizado - ' + userObj.devices[1].value);
-        //console.log('');
+        //c=onsole.log('');
         return userObj;
     });
     res.send({status: true, token: access_token});
 }*/
 
 function atualizarToken(req, res, access_token, name){
-    Mongo.update({name: name}, {devices:[1].value = access_token}, req, function(userObj, req){
-        //userObj.devices[1].value = access_token;
+    var new_token=null;
+    Mongo.update({name: name}, function(userObj, req){
         console.log('token no banco atualizado - ' + userObj.devices[1].value);
-        //console.log('');
-        return userObj;
+        new_token = "ABCDFGHIJKLMOPQRTUVX";
     });
-    res.send({status: true, token: access_token});
+    res.send({status: true, token: new_token});
 }
 
 module.exports = Mobile;
