@@ -45,13 +45,14 @@ mongo.prototype.insert = function(newObj, type, callback){
     });
 }
 
-mongo.prototype.update = function(queryObj, type, req, callback){
+mongo.prototype.update = function(name, access_token, callback){
     users.findOne(queryObj, function (err, userObj) {
         if (err) {
             console.log(err);
         } else if (userObj) {
             console.log('Found:', userObj);
-            userObj = callback(userObj, req);
+            //userObj = callback(userObj, req);
+            /*
             userObj.save(function (err) {
                 if (err) {
                     console.log(err);
@@ -59,6 +60,7 @@ mongo.prototype.update = function(queryObj, type, req, callback){
                     console.log('Updated', userObj);
                 }
             });
+            */
         } else {
             console.log('User not found!');
         }
