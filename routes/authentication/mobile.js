@@ -96,7 +96,7 @@ function atualizarToken(req, res, access_token, name){
         //console.log('');
         return userObj;
     });
-    //res.send({status: true, token: access_token});
+    res.send({status: true, token: access_token});
 }
 
 module.exports = Mobile;
