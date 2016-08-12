@@ -52,10 +52,10 @@ mongo.prototype.update = function(name, access_token, callback){
         } else if (userObj) {
             console.log('Token no banco:' + JSON.stringify(userObj.devices[1].value));
             console.log('Token novo:' + access_token);
-            userObj.devices[1].value = access_token;
+            //userObj.devices[1].value = access_token;
             console.log('Token inserido' + JSON.stringify(userObj.devices[1].value));
             //userObj = callback(userObj, req);
-            users.update({userObj}, function (err, token) {
+            users.update({devices:[1].value: access_token}, function (err, token) {
                 if (err) {
                     console.log(err);
                 } else {
