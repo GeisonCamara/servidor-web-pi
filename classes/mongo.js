@@ -51,6 +51,7 @@ mongo.prototype.update = function(name, access_token, callback){
             console.log(err);
         } else if (userObj) {
             console.log('Found:', userObj);
+            console.log(access_token);
             //userObj = callback(userObj, req);
             /*
             userObj.save(function (err) {
