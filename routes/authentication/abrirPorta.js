@@ -8,9 +8,8 @@ token.post('/', function(req, res){
     Mongo.find({devices: { $elemMatch: { value: tokenGoogle } }}, 'user', res, function(res, userObj){
     	lock('mobile', userObj[0].name);
     	res.send({status: true});
-    },function(req, res){
-        //res.send({status: false});
-        console.log('');
+    },function(req2, res2){
+        res.send({status: false});
         console.log('token fail');
     });
 });
