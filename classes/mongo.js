@@ -54,7 +54,7 @@ mongo.prototype.update = function(name, access_token, callback){
             console.log('Token novo:' + access_token);
             var newToken = userObj.devices[1].value;
             //userObj = callback(userObj, req);
-            users.update({newToken : access_token}, function (err, token){ //tentar substituir users por userObj
+            userObj.update({newToken : access_token}, function (err, token){ //tentar substituir users por userObj
                 if (err){
                     console.log(err);
                 } else{
