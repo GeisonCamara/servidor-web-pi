@@ -25,7 +25,8 @@ Mobile.post('/', function(req, res){
             acessarToken(req, res, access_token);
         }
         else{
-            console.log('fail na primeira requisição'); 
+            console.log('fail na primeira requisição');
+            res.send({status: false}); 
         }
     });
 });
@@ -44,6 +45,7 @@ function acessarToken(req, res, access_token){
             }
             else{
                 console.log('fail na segunda requisição');
+                res.send({status: false});
             }
         }
     )
@@ -65,7 +67,7 @@ function consultarUsuario(req, res, access_token, name){
         console.log('usuario encontrado');
         var token = userObj[0].devices[1].value;
         conferirToken(req, res, token, access_token, name);
-    },function(req, res){
+    },function(req2, res2){
         console.log('usuario não encontrado');
         cadastrarUsuario(req, res, access_token, name);
     });
@@ -73,8 +75,11 @@ function consultarUsuario(req, res, access_token, name){
 
 function cadastrarUsuario(req, res, access_token, name){
     var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: access_token, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
-    Mongo.insert(insertObj, 'user', function(){});
-    //res.send({status: true, token: access_token});
+    Mongo.insert(insertObj, 'user', function(success){
+        if (success)
+            res.send({status: true, token: access_token});
+        else res.send({status: false});
+    });
     console.log('usuario cadastrado');
 }
 
@@ -90,8 +95,12 @@ function conferirToken(req, res, token, access_token, name){
 
 function atualizarToken(req, res, access_token, name){
     var name = {name: name};
-    Mongo.update(name, access_token);
-    res.send({status: true, token: access_token});
+    Mongo.update(name, access_token, function (success) {
+        if (success)
+            res.send({status: true, token: access_token});
+        else res.send({status: false});
+    });
+    
 }
 
 module.exports = Mobile;

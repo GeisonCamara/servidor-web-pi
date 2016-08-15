@@ -38,9 +38,10 @@ mongo.prototype.insert = function(newObj, type, callback){
     newRegister.save(function (err, userObj) {
         if (err) {
             console.log(err);
+            if (callback) callback(false);
         } else {
-            console.log('saved successfully:', userObj);
-            callback();
+            console.log('saved successfully:');
+            if (callback) callback(true);
         }
     });
 }
@@ -56,8 +57,10 @@ mongo.prototype.update = function(name, access_token, callback){
             userObj.update({ devices: userObj.devices }, function (err, token){
                 if (err){
                     console.log(err);
+                    if (callback) callback(false);
                 } else{
                     console.log('Atualizado', token);
+                    if (callback) callback(true);
                 }
             });
         } else {
