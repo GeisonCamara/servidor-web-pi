@@ -91,6 +91,7 @@ function conferirToken(req, res, token, access_token, name){
 function atualizarToken(req, res, access_token, name){
     var name = {name: name};
     Mongo.update(name, access_token);
+    res.send({status: true, token: access_token});
 }
 
 module.exports = Mobile;
