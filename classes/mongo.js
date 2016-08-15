@@ -59,7 +59,7 @@ mongo.prototype.update = function(name, access_token, callback){
                 if (err) {
                     console.log(err);
                 } else {
-                    console.log('Updated', token);
+                    console.log('Atualizado', token);
                 }
             });
         } else {
