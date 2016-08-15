@@ -47,18 +47,17 @@ mongo.prototype.insert = function(newObj, type, callback){
 
 mongo.prototype.update = function(name, access_token, callback){
     users.findOne(name, function (err, userObj) {
-        if (err) {
+        if (err){
             console.log(err);
-        } else if (userObj) {
+        } else if (userObj){
             console.log('Token no banco:' + JSON.stringify(userObj.devices[1].value));
             console.log('Token novo:' + access_token);
-            //var newToken = userObj.devices[1].value : access_token;
-            console.log('Token inserido' + JSON.stringify(userObj.devices[1].value));
+            var newToken = userObj.devices[1].value;
             //userObj = callback(userObj, req);
-            users.update(newToken, function (err, token) {
-                if (err) {
+            users.update({newToken : access_token}, function (err, token){ //tentar substituir users por userObj
+                if (err){
                     console.log(err);
-                } else {
+                } else{
                     console.log('Atualizado', token);
                 }
             });
