@@ -27,8 +27,7 @@ mobile.post('/', function(req, res){
     }
 });
 
-module.exports = mobile;
-/*function cadastrarUsuario(req, res, password, name){
+function cadastrarUsuario(req, res, password, name){
     var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: password, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(success){
         if (success)
@@ -55,4 +54,6 @@ function atualizarToken(req, res, password, name){
         else res.send({status: false});
     });
     
-}*/
+}
+
+module.exports = mobile;
