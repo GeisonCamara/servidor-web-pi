@@ -7,8 +7,9 @@ token.post('/', function(req, res){
 	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
     console.log('password - ' + password);
-    if(req.query.key=="@digitaldesk1" && req.query.user=="admin"){
-    	var name = req.query.user;
+    var key = req.query.key;
+    var name = req.query.user;
+    if(key=="@digitaldesk1" && user=="admin"){
     	Mongo.find({name: name}, 'user', res, function(res, userObj){
     		var token = userObj[0].devices[1].value;
 	        console.log('usuario encontrado');
