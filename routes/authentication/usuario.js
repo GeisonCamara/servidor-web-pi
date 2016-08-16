@@ -35,6 +35,7 @@ function cadastrarUsuario(req, res, password, name){
         else res.send({status: false});
     });
     console.log('usuario cadastrado');
+}
 
 function conferirToken(req, res, token, password, name){
     if(password==token){
