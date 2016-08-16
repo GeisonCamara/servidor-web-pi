@@ -1,11 +1,11 @@
 var express = require('express');
-var token = express.Router();
+var mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
-token.post('/', function(req, res){
-	//var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    //var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+mobile.post('/', function(req, res){
+	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
     console.log('password - ' + password);
     var key = req.query.key;
     var name = req.query.user;
@@ -24,7 +24,7 @@ token.post('/', function(req, res){
     }
 });
 
-module.exports = token;
+module.exports = mobile;
 /*function cadastrarUsuario(req, res, password, name){
     var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: password, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(success){
