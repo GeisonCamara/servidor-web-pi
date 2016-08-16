@@ -9,7 +9,7 @@ mobile.post('/', function(req, res){
     for( var i=0; i < 40; i++ )
         password += possible.charAt(Math.floor(Math.random() * possible.length));
     console.log('password - ' + password);
-    /*var key = req.query.key;
+    var key = req.query.key;
     var name = req.query.user;
     if(key=="@digitaldesk1" && user=="admin"){
     	Mongo.find({name: name}, 'user', res, function(res, userObj){
@@ -23,7 +23,7 @@ mobile.post('/', function(req, res){
     }
     else {
         res.send({status: false});
-    }*/
+    }
 });
 
 module.exports = mobile;
