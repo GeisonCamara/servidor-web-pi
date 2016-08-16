@@ -4,8 +4,8 @@ var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
 token.post('/', function(req, res){
-	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+	//var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    //var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
     console.log('password - ' + password);
     var key = req.query.key;
     var name = req.query.user;
