@@ -2,6 +2,7 @@ var express = require('express');
 var mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
+var autenticar = require("./mobile.js");
 
 mobile.post('/', function(req, res){
 	var password = "";
@@ -39,17 +40,17 @@ function conferirToken(req, res, token, password, name){
         console.log('token correto');
     }
     else {
-        atualizarToken(req, res, password, name);
+        autenticar.atualizarToken(req, res, password, name);
     }
 }
 
-function atualizarToken(req, res, password, name){
+/*function atualizarToken(req, res, password, name){
     var name = {name: name};
     Mongo.update(name, password, function (success) {
         if (success)
             res.send({status: true, token: password});
         else res.send({status: false});
     });
-}
+}*/
 
 module.exports = mobile;
