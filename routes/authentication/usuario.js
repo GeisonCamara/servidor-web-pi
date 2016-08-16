@@ -11,7 +11,7 @@ mobile.post('/', function(req, res){
     console.log('password - ' + password);
     var key = req.query.key;
     var name = req.query.user;
-    if(key=="@digitaldesk1" && user=="admin"){
+    if(key=="@digitaldesk1" && name=="admin"){
     	console.log('hey aplle');
     	/*Mongo.find({name: name}, 'user', res, function(res, userObj){
     		var token = userObj[0].devices[1].value;
