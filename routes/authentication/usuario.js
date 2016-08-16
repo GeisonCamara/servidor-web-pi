@@ -6,8 +6,8 @@ var request = require('request');
 mobile.post('/', function(req, res){
 	//console.log('github');
 	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-    console.log('password - ' + password);
+    //var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    console.log('password - ' + s);
     /*var key = req.query.key;
     var name = req.query.user;
     if(key=="@digitaldesk1" && user=="admin"){
