@@ -5,9 +5,12 @@ var request = require('request');
 
 mobile.post('/', function(req, res){
 	//console.log('github');
-	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-    //var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-    console.log('password - ' + s);
+    var password = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 5; i++ )
+        password += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    console.log('password - ' + password);
     /*var key = req.query.key;
     var name = req.query.user;
     if(key=="@digitaldesk1" && user=="admin"){
