@@ -6,6 +6,7 @@ var request = require('request');
 token.post('/', function(req, res){
 	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+    console.log('password - ' + password);
     if(req.query.key=="@digitaldesk1" && req.query.user=="admin"){
     	var name = req.query.user;
     	Mongo.find({name: name}, 'user', res, function(res, userObj){
