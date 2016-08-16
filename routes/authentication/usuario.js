@@ -12,14 +12,15 @@ mobile.post('/', function(req, res){
     var key = req.query.key;
     var name = req.query.user;
     if(key=="@digitaldesk1" && user=="admin"){
-    	Mongo.find({name: name}, 'user', res, function(res, userObj){
+    	console.log('hey aplle');
+    	/*Mongo.find({name: name}, 'user', res, function(res, userObj){
     		var token = userObj[0].devices[1].value;
 	        console.log('usuario encontrado');
 	        conferirToken(req, res, token, password, name);
 	    },function(req2, res2){
 	        console.log('usuario não encontrado');
 	        cadastrarUsuario(req, res, password, name);
-	    });
+	    });*/
     }
     else {
         res.send({status: false});
