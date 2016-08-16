@@ -4,12 +4,10 @@ var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
 mobile.post('/', function(req, res){
-	//console.log('github');
     var password = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    for( var i=0; i < 5; i++ )
+    for( var i=0; i < 40; i++ )
         password += possible.charAt(Math.floor(Math.random() * possible.length));
-
     console.log('password - ' + password);
     /*var key = req.query.key;
     var name = req.query.user;
