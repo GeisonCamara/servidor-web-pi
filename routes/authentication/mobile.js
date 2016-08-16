@@ -3,7 +3,7 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
-Mobile.post('/usuario', function(req, res){
+/*Mobile.post('/usuario', function(req, res){
     var password = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 40; i++ )
@@ -25,7 +25,7 @@ Mobile.post('/usuario', function(req, res){
     else {
         res.send({status: false});
     }
-});
+});*/
 
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
