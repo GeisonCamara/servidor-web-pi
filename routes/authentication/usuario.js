@@ -7,7 +7,7 @@ mobile.post('/', function(req, res){
 	var s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     var password = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
     console.log('password - ' + password);
-    var key = req.query.key;
+    /*var key = req.query.key;
     var name = req.query.user;
     if(key=="@digitaldesk1" && user=="admin"){
     	Mongo.find({name: name}, 'user', res, function(res, userObj){
@@ -21,7 +21,7 @@ mobile.post('/', function(req, res){
     }
     else {
         res.send({status: false});
-    }
+    }*/
 });
 
 module.exports = mobile;
