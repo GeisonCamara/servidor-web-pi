@@ -3,6 +3,8 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
+function autenticar(){}
+
 Mobile.post('/', function(req, res){
     var tokenGoogle = req.query.token;
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
@@ -92,7 +94,7 @@ function conferirToken(req, res, token, access_token, name){
     }
 }
 
-function atualizarToken(req, res, access_token, name){
+autenticar.prototype.atualizarToken = function(req, res, access_token, name){
     var name = {name: name};
     Mongo.update(name, access_token, function (success) {
         if (success)
