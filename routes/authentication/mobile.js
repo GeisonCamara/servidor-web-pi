@@ -99,7 +99,6 @@ function atualizarToken(req, res, access_token, name){
             res.send({status: true, token: access_token});
         else res.send({status: false});
     });
-    
 }
 
 module.exports = Mobile;
