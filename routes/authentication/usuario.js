@@ -53,7 +53,6 @@ function atualizarToken(req, res, password, name){
             res.send({status: true, token: password});
         else res.send({status: false});
     });
-    
 }
 
 module.exports = mobile;
