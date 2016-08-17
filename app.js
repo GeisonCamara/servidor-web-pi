@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var inicio = require('./routes/index');
+var login = require('./routes/login.js');
 var config = require('./routes/configurations');
 var unlock = require('./routes/unlock');
 var mobile = require('./routes/authentication/mobile.js');
@@ -15,7 +16,6 @@ var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
 var abrirPorta = require('./routes/authentication/abrirPorta.js');
-var login = require('./routes/login.js');
 
 var app = express();
 
@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', inicio);
 //app.use('/config', config);
-app.use('/login',login);
+app.use('/login', login);
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     /*app.use('/authentication/mobile/', mobile);*/
