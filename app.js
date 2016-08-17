@@ -9,7 +9,6 @@ var inicio = require('./routes/index');
 var config = require('./routes/configurations');
 var unlock = require('./routes/unlock');
 var mobile = require('./routes/authentication/mobile.js');
-var usuario = require('./routes/authentication/usuario.js');
 var historic = require('./routes/front-end/historic/historic');
 var historicSearch = require('./routes/front-end/historic/search');
 var userInsert = require('./routes/front-end/user/insert');
@@ -36,7 +35,6 @@ app.use('/', inicio);
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     /*app.use('/authentication/mobile/', mobile);*/
-    app.use('/AutenticarComUsuario', usuario);
     app.use('/AbrirPorta', abrirPorta);
     app.use('/Autenticar', mobile);
 }
