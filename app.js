@@ -15,7 +15,7 @@ var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
 var abrirPorta = require('./routes/authentication/abrirPorta.js');
-var login = require('./router/login.js');
+var login = require('./routes/login.js');
 
 var app = express();
 
