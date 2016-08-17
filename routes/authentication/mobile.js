@@ -90,7 +90,7 @@ function conferirToken(req, res, token, access_token, name){
         console.log('token correto');
     }
     else {
-        atualizarToken(req, res, access_token, name);
+        autenticar.atualizarToken(req, res, access_token, name);
     }
 }
 
