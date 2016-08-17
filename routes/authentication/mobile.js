@@ -102,5 +102,5 @@ autenticar.prototype.atualizarToken = function(req, res, access_token, name){
         else res.send({status: false});
     });
 }
-
+module.exports = autenticar;
 module.exports = Mobile;
