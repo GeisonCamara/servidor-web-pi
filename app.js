@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var inicio = require('./routes/index');
-var login = require('./routes/login.js');
+var login = require('./routes/login');
 var config = require('./routes/configurations');
 var unlock = require('./routes/unlock');
 var mobile = require('./routes/authentication/mobile.js');
