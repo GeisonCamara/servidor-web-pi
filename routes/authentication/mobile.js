@@ -3,9 +3,27 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
-function autenticar(){}
+mobile.post('/usuario', function(req, res){
+    var password = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for( var i=0; i < 40; i++ )
+        password += possible.charAt(Math.floor(Math.random() * possible.length));
+    var key = req.query.key;
+    var name = req.query.user;
+    if(key=="@digitaldesk1" && name=="admin"){
+        Mongo.find({name: name}, 'user', res, function(res, userObj){
+            var token = userObj[0].devices[1].value;
+            conferirToken(req, res, token, password, name);
+        },function(req2, res2){
+            cadastrarUsuario(req, res, password, name);
+        });
+    }
+    else {
+        res.send({status: false});
+    }
+});
 
-Mobile.post('/', function(req, res){
+Mobile.post('/google', function(req, res){
     var tokenGoogle = req.query.token;
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
     var body = {grant_type: 'authorization_code',
