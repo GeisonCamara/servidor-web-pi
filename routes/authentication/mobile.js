@@ -3,7 +3,7 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
-mobile.post('/usuario', function(req, res){
+Mobile.post('/usuario', function(req, res){
     var password = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     for( var i=0; i < 40; i++ )
