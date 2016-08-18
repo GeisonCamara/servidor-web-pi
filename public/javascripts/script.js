@@ -35,18 +35,17 @@ function clickButton(){
 function onSignIn(response) {
     var perfil = response.getBasicProfile();
     var userID = perfil.getId();
-    console.log("ID: " + userID);
-    console.log('');
     var userName = perfil.getName();
     var userEmail = perfil.getEmail();
     var userPicture = perfil.getImageUrl();
     /*var dominio = userEmail.indexOf("@");
     var email = userEmail.substring(0, dominio);
     var espaco = userName.indexOf(" ");   
-    userName = userName.replace(/[ìíî]/,"i");*/
-    var nome = userName.substring(0, espaco);
+    userName = userName.replace(/[ìíî]/,"i");
+    var nome = userName.substring(0, espaco);*/
     var LoR = response.getAuthResponse().id_token;
     console.log("Token: " + LoR);
+    console.log('');
 };
 
 $(document).ready(function(){
