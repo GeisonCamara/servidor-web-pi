@@ -41,9 +41,8 @@ function onSignIn(response) {
     var dominio = userEmail.indexOf("@");
     var email = userEmail.substring(0, dominio);
     var espaco = userName.indexOf(" ");   
-    userName = userName.replace(/[ìíî]/,"i");
+    //userName = userName.replace(/[ìíî]/,"i");
     var nome = userName.substring(0, espaco);
-    pesquisar(email);
     var LoR = response.getAuthResponse().id_token;
     console.log("Token: " + LoR);
 };
