@@ -18,10 +18,6 @@ function unlock(){
     });
 }
 
-function logarGoogle(){
-    console.log('oi');
-}
-
 function clickButton(){
 	$('#button').click(function(){
     	var state = $('#button').is(":checked");
@@ -41,7 +37,9 @@ $(document).ready(function(){
     showButton();
     clickButton();
     $('#login').click(function(){
-        console.log('oi2');
+        $.ajax({
+            url: "http://porta.digitaldesk.com.br/redirecionar",
+        });
     });
 });
 
