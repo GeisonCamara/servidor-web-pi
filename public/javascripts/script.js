@@ -40,5 +40,8 @@ $(document).ready(function(){
     hideButton();
     showButton();
     clickButton();
+    $('#login').click(function(){
+        console.log('oi2');
+    });
 });
 
