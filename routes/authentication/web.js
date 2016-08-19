@@ -7,4 +7,4 @@ web.get('/', function(req, res, next) {
     console.log('foi');
 });
 
-module.exports = web;*
+module.exports = web;
