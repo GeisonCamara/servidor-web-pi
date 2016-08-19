@@ -19,8 +19,18 @@ function unlock(){
 }
 
 function onSignIn(response) {
-   console.log('Logou');
-   window.location.assign("https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&state=%2Fprofile&redirect_uri=http://localhost:3000&response_type=token&client_id=489399558653-enu1g23uf2gt1algid9pvfhn8n57tmqt.apps.googleusercontent.com");
+    console.log('Logou');
+    var ashusauhhsausuha = $.ajax({
+        type: "GET",
+        url: "https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&state=%2Fprofile&redirect_uri=http://localhost:3000&response_type=token&client_id=489399558653-enu1g23uf2gt1algid9pvfhn8n57tmqt.apps.googleusercontent.com",
+        success: function(){
+            console.log(ashusauhhsausuha);
+        }
+        error: function(){
+
+        }
+    });
+    window.location.assign("https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&state=%2Fprofile&redirect_uri=http://localhost:3000&response_type=token&client_id=489399558653-enu1g23uf2gt1algid9pvfhn8n57tmqt.apps.googleusercontent.com");
 };
 
 function clickButton(){
