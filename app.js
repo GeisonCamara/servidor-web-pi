@@ -16,6 +16,7 @@ var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
 var abrirPorta = require('./routes/authentication/abrirPorta.js');
+var redirecionar = require('./routes/authentication/web.js');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', inicio);
 //app.use('/config', config);
 app.use('/login', login);
+app.use('/redirecionar', redirecionar)
 app.use('/unlock', unlock);
 if(config.get('mobile')){
     /*app.use('/authentication/mobile/', mobile);*/
