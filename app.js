@@ -63,13 +63,13 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        /*
+        
         res.render('error', {
             message: err.message,
             error: err
         });
-        */
-        res.redirect('porta.digitaldesk.com.br');
+        
+        //res.redirect('porta.digitaldesk.com.br');
     });
 }
 
@@ -77,13 +77,13 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    /*
+    
     res.render('error', {
         message: err.message,
         error: {}
     });
-    */
-    res.redirect('porta.digitaldesk.com.br');
+    
+    //res.redirect('porta.digitaldesk.com.br');
 });
 
 module.exports = app;
