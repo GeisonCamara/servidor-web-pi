@@ -1,7 +1,7 @@
 var express = require('express');
 var web = express.Router();
 var Mongo = require("./../../classes/mongo.js");
-var request = require('request');
+/*var request = require('request');
 
 web.get('/', function(req, res, next) {
     res.writeHead(301, {'Location': 'https://www.google.com'});
@@ -9,4 +9,4 @@ web.get('/', function(req, res, next) {
 	console.log('/redirecionar');
 });
 
-module.exports = web;
+module.exports = web;*/
