@@ -4,8 +4,8 @@ var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 
 web.get('/', function(req, res, next) {
-    response.writeHead(301, {'Location': 'https://www.google.com'});
-	response.end();
+    res.writeHead(301, {'Location': 'https://www.google.com'});
+	res.end();
 	console.log('/redirecionar');
 });
 
