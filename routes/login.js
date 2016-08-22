@@ -13,7 +13,7 @@ router.get('/Google', function(req, res, next) {
 });
 
 router.get('/CompletarGoogle', function(req, res, next) {
-	var url_parts = url.parse(req.url, true);
+	var url_parts = url.parse(req.url.replace('#', '?'), true);
 	var query = url_parts.query;
 
 	console.log('access_token - ' + query.access_token);
