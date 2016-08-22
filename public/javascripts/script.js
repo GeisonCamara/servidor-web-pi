@@ -36,10 +36,10 @@ $(document).ready(function(){
     hideButton();
     showButton();
     clickButton();
-    $('#login').click(function(){
+    /*$('#login').click(function(){
         $.ajax({
             url: "http://porta.digitaldesk.com.br/redirecionar",
         });
-    });
+    });*/
 });
 
