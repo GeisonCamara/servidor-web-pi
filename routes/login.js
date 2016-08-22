@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var url = require('url');
 
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
@@ -12,9 +13,12 @@ router.get('/Google', function(req, res, next) {
 });
 
 router.get('/CompletarGoogle', function(req, res, next) {
-	console.log('access_token - ' + req.query.access_token);
-	console.log('req - ' + JSON.stringify(req));
-    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + req.query.access_token});
+	var url_parts = url.parse(req.url, true);
+	var query = url_parts.query;
+
+	console.log('access_token - ' + query.access_token);
+	console.log('req - ' + JSON.stringify(query));
+    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + query.access_token});
 	res.end();
 });
 
