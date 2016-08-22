@@ -18,7 +18,7 @@ router.get('/CompletarGoogle', function(req, res, next) {
 	var endereco = window.location.href
 
 
-	console.log('URL - ' + endereco;
+	console.log('URL - ' + endereco);
 	/*console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));*/
     res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
