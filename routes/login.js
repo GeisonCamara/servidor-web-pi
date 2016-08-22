@@ -18,7 +18,7 @@ router.get('/CompletarGoogle', function(req, res, next) {
 
 	console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));
-    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + query.access_token});
+    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 	res.end();
 });
 
