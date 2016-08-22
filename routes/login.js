@@ -13,7 +13,7 @@ router.get('/Google', function(req, res, next) {
 
 router.get('/CompletarGoogle', function(req, res, next) {
 	console.log('access_token - ' + req.query.access_token);
-	console.log('req - ' + req);
+	console.log('req - ' + JSON.stringfy(req));
     res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + req.query.access_token});
 	res.end();
 });
