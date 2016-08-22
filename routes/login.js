@@ -13,8 +13,8 @@ router.get('/Google', function(req, res, next) {
 });
 
 router.get('/CompletarGoogle', function(req, res, next) {
-	var url_parts = url.parse(req.url.replace(/[#]/g,'?'), true);
-	var query = url_parts.query;
+	var url_parts = url.parse(req.url, true);
+	var query = url_parts.query.replace('#', '?');
 
 	console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));
