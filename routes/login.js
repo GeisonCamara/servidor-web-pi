@@ -12,7 +12,8 @@ router.get('/Login', function(req, res, next) {
 });
 
 router.get('/CompletarGoogle', function(req, res, next) {
-    //requisição access_token
+    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
+	res.end();
 });
 
 
