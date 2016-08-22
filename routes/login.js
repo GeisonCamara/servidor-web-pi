@@ -15,13 +15,13 @@ router.get('/Google', function(req, res, next) {
 router.get('/CompletarGoogle', function(req, res, next) {
 	var url_parts = url.parse(req.url, true);
 	var query = url_parts.query;
+	var url = window.location.pathname;
 
+	console.log(url);
 	console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));
     res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + query.access_token});
 	res.end();
-	var url = window.location.pathname;
-	console.log(url);
 });
 
 module.exports = router;
