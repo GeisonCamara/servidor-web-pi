@@ -16,10 +16,12 @@ router.get('/CompletarGoogle', function(req, res, next) {
 	var url_parts = url.parse(req.url, true);
 	var query = url_parts.query;
 
-	console.log('access_token - ' + req.query.access_token);
+	console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));
-    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + req.query.access_token});
+    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/?access_token=' + query.access_token});
 	res.end();
+	var url = window.location.href.toString();
+	console.log(url);
 });
 
 module.exports = router;
