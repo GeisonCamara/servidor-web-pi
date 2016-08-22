@@ -12,11 +12,13 @@ router.get('/Google', function(req, res, next) {
 });
 
 router.get('/CompletarGoogle', function(req, res, next) {
-	var url_parts = url.parse(req.url, true).query;
+	//var url_parts = url.parse(req.url, true).query;
 	//var query = url_parts.query;
 	//var Url = req.url;
+	var endereco = window.location.href
 
-	console.log('URL - ' + JSON.stringify(url_parts));
+
+	console.log('URL - ' + endereco;
 	/*console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));*/
     res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
