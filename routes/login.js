@@ -111,7 +111,8 @@ function conferirToken(req, res, token, access_token, name){
 
 function atualizarToken(req, res, access_token, name){
     var name = {name: name};
-    Mongo.update(name, access_token, function (success) {
+    var action = 'web';
+    Mongo.update(name, access_token, action, function (success) {
         if (success){
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 			res.end();
