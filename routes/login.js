@@ -90,9 +90,11 @@ function consultarUsuario(req, res, access_token, name){
 function cadastrarUsuario(req, res, access_token, name){
     var insertObj = {name: name, role: "", status: "A", devices: [{status: "A", name: "web", value: access_token, timeRange: ""}, {status: "A", name: "mobile", value: "", timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(success){
-        /*if (success)
-            res.send({status: true, token: access_token});
-        else res.send({status: false});*/
+        if (success){
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
+			res.end();
+		}
+        //else res.send({status: false});
     });
     console.log('usuario cadastrado');
 }
@@ -110,9 +112,11 @@ function conferirToken(req, res, token, access_token, name){
 function atualizarToken(req, res, access_token, name){
     var name = {name: name};
     Mongo.update(name, access_token, function (success) {
-        /*if (success)
-            res.send({status: true, token: access_token});
-        else res.send({status: false});*/
+        if (success){
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
+			res.end();
+		}
+        //else res.send({status: false});
     });
 }
 
