@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var url = require('url');
-//var Mongo = require("./../../classes/mongo.js");
+var Mongo = require("./../classes/mongo.js");
 var request = require('request');
 
 router.get('/', function(req, res, next) {
