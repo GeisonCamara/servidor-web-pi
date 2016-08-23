@@ -112,8 +112,8 @@ function atualizarToken(req, res, access_token, name){
     Mongo.update(name, access_token, function (success) {
         /*if (success)
             res.send({status: true, token: access_token});
-        else res.send({status: false});
-    });*/
+        else res.send({status: false});*/
+    });
 }
 
 module.exports = router;
