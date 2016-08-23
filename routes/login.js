@@ -17,9 +17,6 @@ router.get('/CompletarGoogle', function(req, res, next) {
 	var url_parts = url.parse(req.url, true).query;
 	console.log('code - ' + JSON.stringify(url_parts.code));
 
-    //res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
-	//res.end();
-
 	var codeGoogle = url_parts.code;
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
     var body = {grant_type: 'authorization_code',
@@ -40,7 +37,8 @@ router.get('/CompletarGoogle', function(req, res, next) {
         }
         else{
             console.log('fail na primeira requisição');
-            //res.send({status: false}); 
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.end();
         }
     });
 });
@@ -59,7 +57,8 @@ function acessarToken(req, res, access_token){
             }
             else{
                 console.log('fail na segunda requisição');
-                //res.send({status: false});
+                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+				res.end();
             }
         }
     )
@@ -72,7 +71,8 @@ function verificarGrupo(req, res, access_token, name, domain){
     }    
     else {
         console.log('email inválido');
-        //res.send({status: false});
+        res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+		res.end();
     }
 }
 
@@ -93,15 +93,18 @@ function cadastrarUsuario(req, res, access_token, name){
         if (success){
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 			res.end();
+		} else{ 
+			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.end();
 		}
-        //else res.send({status: false});
     });
     console.log('usuario cadastrado');
 }
 
 function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
-        //res.send({status: true, token: access_token});
+        res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
+		res.end()
         console.log('token correto');
     }
     else {
@@ -116,8 +119,10 @@ function atualizarToken(req, res, access_token, name){
         if (success){
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 			res.end();
+		} else{ 
+			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.end();
 		}
-        //else res.send({status: false});
     });
 }
 
