@@ -114,7 +114,8 @@ function conferirToken(req, res, token, access_token, name){
 
 function atualizarToken(req, res, access_token, name){
     var name = {name: name};
-    Mongo.update(name, access_token, function (success) {
+    var action = 'mobile';
+    Mongo.update(name, access_token, action, function (success) {
         if (success)
             res.send({status: true, token: access_token});
         else res.send({status: false});
