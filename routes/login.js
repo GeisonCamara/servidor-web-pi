@@ -73,6 +73,7 @@ function verificarGrupo(req, res, access_token, name, domain){
         console.log('email inválido');
         res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
 		res.end();
+		$("#usuarioInvalido").jade('Usuário Inválido');
     }
 }
 
@@ -122,6 +123,7 @@ function atualizarToken(req, res, access_token, name){
 		} else{ 
 			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
 			res.end();
+			$("#usuarioInvalido").jade('Usuário Inválido');
 		}
     });
 }
