@@ -36,10 +36,9 @@ $(document).ready(function(){
     hideButton();
     showButton();
     clickButton();
-    /*$('#login').click(function(){
-        $.ajax({
-            url: "http://porta.digitaldesk.com.br/redirecionar",
-        });
-    });*/
+    $('#signOut').click(function(){
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {});
+    });
 });
 
