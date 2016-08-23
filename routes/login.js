@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var url = require('url');
+var Mongo = require("./../../classes/mongo.js");
+var request = require('request');
 
 router.get('/', function(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
@@ -16,7 +18,7 @@ router.get('/CompletarGoogle', function(req, res, next) {
 	//var query = url_parts.query;
 	//var Url = req.url;
 
-	console.log('URL - ' + JSON.stringify(url_parts));
+	console.log('code - ' + JSON.stringify(url_parts.code));
 	/*console.log('access_token - ' + query.access_token);
 	console.log('req - ' + JSON.stringify(query));*/
 	/*var requrl = url.format({
