@@ -59,7 +59,7 @@ function acessarToken(req, res, access_token){
             }
             else{
                 console.log('fail na segunda requisição');
-                res.send({status: false});
+                //res.send({status: false});
             }
         }
     )
@@ -79,7 +79,7 @@ function verificarGrupo(req, res, access_token, name, domain){
 function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
         console.log('usuario encontrado');
-        var token = userObj[0].devices[1].value;
+        var token = userObj[0].devices[0].value;
         conferirToken(req, res, token, access_token, name);
     },function(req2, res2){
         console.log('usuario não encontrado');
@@ -88,7 +88,7 @@ function consultarUsuario(req, res, access_token, name){
 }
 
 function cadastrarUsuario(req, res, access_token, name){
-    var insertObj = {name: name, role: "", status: "A", devices: [{status: "I", name: "touch", value: "", timeRange: ""}, {status: "A", name: "mobile", value: access_token, timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
+    var insertObj = {name: name, role: "", status: "A", devices: [{status: "A", name: "web", value: access_token, timeRange: ""}, {status: "A", name: "mobile", value: "", timeRange: ""}, {status: "I", name: "nfc", value: "", timeRange: ""}]};    
     Mongo.insert(insertObj, 'user', function(success){
         /*if (success)
             res.send({status: true, token: access_token});
