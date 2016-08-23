@@ -92,8 +92,8 @@ function cadastrarUsuario(req, res, access_token, name){
     Mongo.insert(insertObj, 'user', function(success){
         /*if (success)
             res.send({status: true, token: access_token});
-        else res.send({status: false});
-    });*/
+        else res.send({status: false});*/
+    });
     console.log('usuario cadastrado');
 }
 
