@@ -9,12 +9,6 @@ function showButton(){
 function unlock(){
 	$.ajax({
 		url: "http://porta.digitaldesk.com.br/unlock?key=DD2016TRNEE&device=web",
-		//url: "http://192.168.2.2:3000/unlock?key=DD2016TRNEE&device=web",
-		/*
-		success: function(result){
-        	alert(result);
-    	}
-    	*/
     });
 }
 
