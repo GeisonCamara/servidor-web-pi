@@ -9,31 +9,32 @@ function showButton(){
 function unlock(){
 	$.ajax({
 		url: "http://porta.digitaldesk.com.br/unlock?key=DD2016TRNEE&device=web",
-    });
+	});
 }
 
 function clickButton(){
 	$('#button').click(function(){
-    	var state = $('#button').is(":checked");
-    	$(this).prop('disabled', true);
-    	unlock();
-    	if(state===true){
-    		setTimeout(function(){
-    			$('#button').attr('checked', false);
-    			$('#button').prop('disabled', false);
-    		},3500);
-    	}
+		var state = $('#button').is(":checked");
+		$(this).prop('disabled', true);
+		unlock();
+		if(state===true){
+			setTimeout(function(){
+				$('#button').attr('checked', false);
+				$('#button').prop('disabled', false);
+			},3500);
+		}
 	});
 }
 
 $(document).ready(function(){
-    hideButton();
-    showButton();
-    clickButton();
-    $('#signOut').click(function(){
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {});
-        console.log('pressionado');
-    });
+	hideButton();
+	showButton();
+	clickButton();
+	$('#signOut').click(function(){
+		var auth2 = gapi.auth2.getAuthInstance();
+		auth2.signOut().then(function () {
+			console.log('User signed out.');
+		});
+	});
 });
 
