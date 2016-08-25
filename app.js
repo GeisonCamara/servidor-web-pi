@@ -19,6 +19,10 @@ var abrirPorta = require('./routes/authentication/abrirPorta.js');
 
 var app = express();
 
+var mustBe = require("../mustbe");
+var mustBeConfig = require("./mustBeConfig");
+mustBe.configure(mustBeConfig);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
