@@ -41,7 +41,7 @@ router.get('/CompletarGoogle', function(req, res, next) {
         }
         else{
             console.log('fail na primeira requisição');
-            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 			res.end();
         }
     });
@@ -61,7 +61,7 @@ function acessarToken(req, res, access_token){
             }
             else{
                 console.log('fail na segunda requisição');
-                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 				res.end();
             }
         }
@@ -75,7 +75,7 @@ function verificarGrupo(req, res, access_token, name, domain){
     }    
     else {
         console.log('email inválido');
-        res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+        res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 		res.end();
     }
 }
@@ -98,7 +98,7 @@ function cadastrarUsuario(req, res, access_token, name){
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 			res.end();
 		} else{ 
-			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 			res.end();
 		}
     });
@@ -124,7 +124,7 @@ function atualizarToken(req, res, access_token, name){
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 			res.end();
 		} else{ 
-			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 			res.end();
 		}
     });
