@@ -8,6 +8,10 @@ router.get('/', function(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
 });
 
+router.get('/erro', function(req, res, next) {
+    res.render('invalido', { title: 'Server Raspberry PI' });
+});
+
 router.get('/Google', function(req, res, next) {
     res.writeHead(301, {'Location': 'https://accounts.google.com/o/oauth2/v2/auth?scope=email%20profile&state=%2Fprofile&redirect_uri=http://porta.digitaldesk.com.br/Login/CompletarGoogle&response_type=code&client_id=489399558653-enu1g23uf2gt1algid9pvfhn8n57tmqt.apps.googleusercontent.com'});
 	res.end();
@@ -95,7 +99,6 @@ function cadastrarUsuario(req, res, access_token, name){
 			res.end();
 		} else{ 
 			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
-			res.write('<h1>E-mail inválido!</h1>');
 			res.end();
 		}
     });
