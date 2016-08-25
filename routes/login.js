@@ -95,6 +95,7 @@ function cadastrarUsuario(req, res, access_token, name){
 			res.end();
 		} else{ 
 			res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login'});
+			res.write('<h1>E-mail inválido!</h1>');
 			res.end();
 		}
     });
