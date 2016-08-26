@@ -1,5 +1,5 @@
 var mustBe = require("./../../node_modules/mustbe/mustbe");
-var Mongo = require("./../classes/mongo.js");
+var Mongo = require("./../../classes/mongo.js");
 
 module.exports = function(config){
     config.routeHelpers(function(rh){
