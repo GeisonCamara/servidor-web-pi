@@ -5,8 +5,8 @@ var Mongo = require("./../classes/mongo.js");
 var request = require('request');
 
 router.get('/', function(req, res, next) {
+	res.clearCookie("token");
     res.render('login', { title: 'Server Raspberry PI' });
-    res.clearCookie("token");
 });
 
 router.get('/erro', function(req, res, next) {
