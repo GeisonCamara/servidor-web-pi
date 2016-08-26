@@ -19,10 +19,6 @@ var abrirPorta = require('./routes/authentication/abrirPorta.js');
 
 var app = express();
 
-var mustBe = require("./node_modules/mustbe/mustbe");
-var mustBeConfig = require("./routes/authentication/mustBeConfig");
-mustBe.configure(mustBeConfig);
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -59,6 +55,10 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
+
+var mustBe = require("./node_modules/mustbe/mustbe");
+var mustBeConfig = require("./routes/authentication/mustBeConfig");
+mustBe.configure(mustBeConfig);
 
 // error handlers
 
