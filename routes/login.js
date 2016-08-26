@@ -3,7 +3,7 @@ var router = express.Router();
 var url = require('url');
 var Mongo = require("./../classes/mongo.js");
 var request = require('request');
-var mustbe = require("mustbe").routeHelpers();
+var mustbe = require("./../node_modules/mustbe/mustbe").routeHelpers();
 
 router.get("/", mustbe.authenticated(), login);
 
