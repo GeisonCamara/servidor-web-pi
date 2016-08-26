@@ -19,8 +19,8 @@ var abrirPorta = require('./routes/authentication/abrirPorta.js');
 
 var app = express();
 
-var mustBe = require("node_modules/mustbe/mustbe");
-var mustBeConfig = require("routes/authentication/mustBeConfig");
+var mustBe = require("./node_modules/mustbe/mustbe");
+var mustBeConfig = require("./routes/authentication/mustBeConfig");
 mustBe.configure(mustBeConfig);
 
 // view engine setup
