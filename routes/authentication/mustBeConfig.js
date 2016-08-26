@@ -6,6 +6,7 @@ module.exports = function(config){
         // get the current user from the request object
         rh.getUser(function(req, cb){
             var tokenCookie = req.cookies["token"];
+            console.log(tokenCookie);
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 config.activities(function(activities){
                     activities.can("users.view", function(identity, params, cb){
