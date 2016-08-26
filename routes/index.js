@@ -16,9 +16,15 @@ config.set('historicInterface', 0);
 config.set('userInterface', 0);
 
 
-router.get('/', function(req, res, next) {
+router.get("/", mustbe.authenticated(), index);
+
+function index(req, res, next) {
     res.render('index', { title: 'Server Raspberry PI' });
-});
+};
+
+/*router.get('/', function(req, res, next) {
+    res.render('index', { title: 'Server Raspberry PI' });
+});*/
 
 var flag = true;
 
