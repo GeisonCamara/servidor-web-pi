@@ -5,16 +5,10 @@ var Mongo = require("./../classes/mongo.js");
 var request = require('request');
 var mustbe = require("mustbe").routeHelpers();
 
-router.get("/", mustbe.authenticated(), login);
-
-function login(req, res, next) {
+router.get('/', function(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
     res.clearCookie("token");
-};
-
-/*router.get('/', function(req, res, next) {
-    res.render('login', { title: 'Server Raspberry PI' });
-});*/
+});
 
 router.get('/erro', function(req, res, next) {
     res.render('invalido', { title: 'Server Raspberry PI' });
