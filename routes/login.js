@@ -3,9 +3,9 @@ var router = express.Router();
 var url = require('url');
 var Mongo = require("./../classes/mongo.js");
 var request = require('request');
-var mustBe = require("../node_modules/mustbe/mustbe").routeHelpers();
+var mustbe = require("./../node_modules/mustbe/mustbe").routeHelpers();
 
-router.get("/", mustBe.authenticated(), login);
+router.get("/", mustbe.authenticated(), login);
 
 function login(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
