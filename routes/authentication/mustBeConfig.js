@@ -1,4 +1,4 @@
-var mustBe = require("../../node_modules/mustbe/mustbe");
+var mustBe = require("./../../node_modules/mustbe/mustbe");
 
 module.exports = function(config){
     config.routeHelpers(function(rh){
