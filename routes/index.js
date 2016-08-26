@@ -3,6 +3,7 @@ var router = express.Router();
 var lock = require('./../actions/lock.js');
 var sound = require('./../actions/sound.js');
 var config = require('./../classes/config.js');
+var mustbe = require("mustbe").routeHelpers();
 
 config.set('campainha:status', 1);
 config.set('campainha:toque', 'dingdong.wav');
