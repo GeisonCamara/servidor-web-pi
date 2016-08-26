@@ -3,7 +3,6 @@ var Mongo = require("./../../classes/mongo.js");
 
 module.exports = function(config){
     config.routeHelpers(function(rh){
-        // get the current user from the request object
         rh.getUser(function(req, cb){
             var tokenCookie = req.cookies["token"];
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
@@ -18,25 +17,10 @@ module.exports = function(config){
             },function(req2, res2){
                 console.log('usuario não encontrado');
                 rh.notAuthenticated(function(req, res, next){
-                    res.redirect("/login/erro");
+                    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
+                    res.end()
                 });
             });
-                //cb(null, req.user);
         });
-        // what do we do when the user is not authorized?
-        /*rh.notAuthorized(function(req, res, next){
-            res.redirect("/login/erro");
-        });*/
     });
-    /*config.activities(function(activities){
-        // configure an activity with an authorization check
-        activities.can("view thing", function(identity, params, cb){
-            var id = params["id"];
-            someLib.anotherThing(id, function(err, thing){
-                if (err) { return cb(err); }
-                var hasThing = !!thing;
-                cb(null, hasThing);
-            });
-        });
-    });*/
 };
