@@ -1,6 +1,5 @@
-//var mustBe = require("./../../node_modules/mustbe/mustbe");
+var mustBe = require("./../../node_modules/mustbe/mustbe");
 var Mongo = require("./../classes/mongo.js");
-
 
 module.exports = function(config){
     config.routeHelpers(function(rh){
@@ -17,7 +16,7 @@ module.exports = function(config){
                 });
             },function(req2, res2){
                 console.log('usuario não encontrado');
-                rh.notAuthorized(function(req, res, next){
+                rh.notAuthenticated(function(req, res, next){
                     res.redirect("/login/erro");
                 });
             });
