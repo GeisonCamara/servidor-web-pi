@@ -5,6 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mustBe = require("mustbe");
+var mustBeConfig = require("./routes/authentication/mustBeConfig");
+mustBe.configure(mustBeConfig);
+
 var inicio = require('./routes/index');
 var login = require('./routes/login');
 var config = require('./routes/configurations');
@@ -55,10 +59,6 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
-
-var mustBe = require("./node_modules/mustbe/mustbe");
-var mustBeConfig = require("./routes/authentication/mustBeConfig");
-mustBe.configure(mustBeConfig);
 
 // error handlers
 
