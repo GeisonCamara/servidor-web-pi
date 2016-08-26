@@ -3,10 +3,18 @@ var router = express.Router();
 var url = require('url');
 var Mongo = require("./../classes/mongo.js");
 var request = require('request');
+var mustbe = require("mustbe").routeHelpers();
 
-router.get('/', function(req, res, next) {
+router.get("/", mustBe.authenticated(), login);
+
+function login(req, res, next) {
     res.render('login', { title: 'Server Raspberry PI' });
-});
+    res.clearCookie("token");
+};
+
+/*router.get('/', function(req, res, next) {
+    res.render('login', { title: 'Server Raspberry PI' });
+});*/
 
 router.get('/erro', function(req, res, next) {
     res.render('invalido', { title: 'Server Raspberry PI' });
@@ -36,6 +44,7 @@ router.get('/CompletarGoogle', function(req, res, next) {
         if (!error && response.statusCode == 200) {
             var parse = JSON.parse(body);
             var access_token = parse.access_token;
+            res.cookie("token", access_token);
             acessarToken(req, res, access_token);
             console.log(access_token);
         }
