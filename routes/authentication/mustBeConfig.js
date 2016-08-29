@@ -16,21 +16,19 @@ module.exports = function(config) {
     config.routeHelpers(function(rh) {
         
         rh.getUser(function(req, cb) {
-            console.log(req);
-
             var tokenCookie = req.cookies["token"];
 
             console.log('[mustBe] rh.getUser: token: ' + tokenCookie);
 
             if (!tokenCookie) { 
-                cb('Usuário inválido.');
+                cb(null, null);
                 return;
             }
 
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
             }, function(){
-                cb('Usuário inválido.');
+                cb(null, null);
             });
         });
 
