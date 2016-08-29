@@ -23,10 +23,12 @@ module.exports = function(config) {
 
             console.log('[mustBe] rh.getUser: token: ' + tokenCookie);
 
+            if (!tokenCookie) cb('Usuário inválido.');
+
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
             },function(req2, res2){
-                cb('Usuário inválido');
+                cb('Usuário inválido.');
             });
         });
 
