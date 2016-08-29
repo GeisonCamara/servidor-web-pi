@@ -28,6 +28,8 @@ module.exports = function(config) {
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
             }, function(){
+                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
+                res.end();
                 cb('Usuário inválido.');
             });
         });
