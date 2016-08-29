@@ -16,7 +16,7 @@ module.exports = function(config) {
     config.routeHelpers(function(rh) {
         
         rh.getUser(function(req, cb) {
-            console.log(JSON.stringify(req));
+            console.log(req);
 
             var tokenCookie = req.cookies["token"];
 
