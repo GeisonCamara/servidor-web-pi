@@ -16,6 +16,8 @@ module.exports = function(config) {
     config.routeHelpers(function(rh) {
         
         rh.getUser(function(req, cb) {
+            console.log(JSON.stringify(req));
+
             var tokenCookie = req.cookies["token"];
 
             console.log('[mustBe] rh.getUser: token: ' + tokenCookie);
@@ -24,7 +26,7 @@ module.exports = function(config) {
                 cb('Usuário inválido.');
                 return;
             }
-            
+
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
             }, function(){
