@@ -27,8 +27,10 @@ module.exports = function(config) {
 
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
-            },function(req2, res2){
+            }, function(req2, res2){
                 cb('Usuário inválido.');
+            }, function () {
+                cb('Usuário não registrado por cookie.');                
             });
         });
 
