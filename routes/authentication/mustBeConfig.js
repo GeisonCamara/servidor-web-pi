@@ -9,9 +9,9 @@ module.exports = function(config){
                 console.log('success');
                 config.activities(function(activities){
                     activities.can("index.view", function(identity, params, cb){
-                        //identity.isAuthenticated(function(err, isAuth){
-                            return cb(err, isAuthenticated);
-                        //});
+                        identity.isAuthorized(function(err, isAuth){
+                            return cb(null, isAuth);
+                        });
                     });
                 });
             },function(req2, res2){
