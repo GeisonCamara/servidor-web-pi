@@ -8,11 +8,8 @@ module.exports = function(config) {
         id.isAuthenticated(function(user, cb) {
             console.log('[mustBe] id.isAuthenticated');
 
-            // var isAuthenticated = false;
-            // if (user) {
-            //     isAuthenticated = user.isLoggedIn();
-            // }
-            cb(null, true);
+            if (user) cb(null, true);
+            else cb(null, false);            
         });
     });
 
@@ -28,8 +25,6 @@ module.exports = function(config) {
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 cb(null, { token: tokenCookie });
             }, function(){
-                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
-                res.end();
                 cb('Usuário inválido.');
             });
         });
