@@ -16,10 +16,8 @@ module.exports = function(config){
                 });
             },function(req2, res2){
                 console.log('usuario não encontrado');
-                rh.notAuthenticated(function(req, res, next){
-                    res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
-                    res.end()
-                });
+                res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
+                res.end()
             });
         });
     });
