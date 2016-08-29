@@ -10,7 +10,7 @@ module.exports = function(config){
                 config.activities(function(activities){
                     activities.can("index.view", function(identity, params, cb){
                         //identity.isAuthenticated(function(err, isAuth){
-                            return cb(err, isAuth);
+                            return cb(err, isAuthenticated);
                         //});
                     });
                 });
