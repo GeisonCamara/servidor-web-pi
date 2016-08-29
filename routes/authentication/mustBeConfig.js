@@ -42,7 +42,7 @@ module.exports = function(config) {
         rh.notAuthenticated(function(req, res, next) {
             console.log('[mustBe] rh.notAuthenticated');
 
-            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/deslogado'});
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/deslogado'});
             res.end();
         });       
 
