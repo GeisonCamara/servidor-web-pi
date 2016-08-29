@@ -8,7 +8,7 @@ module.exports = function(config){
             Mongo.find({devices: { $elemMatch: { value: tokenCookie } }}, 'user', cb, function(cb, userObj){
                 console.log('success');
                 config.activities(function(activities){
-                    activities.can("users.view", function(identity, params, cb){
+                    activities.can("index.view", function(identity, params, cb){
                         identity.isAuthenticated(function(err, isAuth){
                             return cb(err, isAuth);
                         });
