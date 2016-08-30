@@ -22,6 +22,7 @@ router.get("/", mustbe.authenticated(), index);
 function index(req, res, next) {
     res.writeHead(301, {'Cache-Control': 'private'});
     res.render('index', { title: 'Server Raspberry PI' });
+    res.end();
 };
 
 /*router.get('/', function(req, res, next) {
