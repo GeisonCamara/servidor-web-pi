@@ -21,7 +21,6 @@ router.get("/", mustbe.authenticated(), index);
 
 function index(req, res, next) {
     res.render('index', { title: 'Server Raspberry PI' });
-    res.end();
 };
 
 /*router.get('/', function(req, res, next) {
