@@ -37,7 +37,7 @@ module.exports = function(config) {
 
             res.writeHead(301, {
             	'Location': 'http://porta.digitaldesk.com.br/login/erro',
-            	'Cache-Control': 'private'
+            	'Cache-Control': 'no-cache'
         });
             res.end();
         });
@@ -47,7 +47,7 @@ module.exports = function(config) {
 
             res.writeHead(301, {
             	'Location': 'http://porta.digitaldesk.com.br/login/deslogado',
-            	'Cache-Control': 'private'
+            	'Cache-Control': 'no-cache'
         });
             res.end();
         });       
