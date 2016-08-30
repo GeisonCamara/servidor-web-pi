@@ -35,20 +35,16 @@ module.exports = function(config) {
         rh.notAuthorized(function(req, res, next) {
             console.log('[mustBe] rh.notAuthorized');
 
-            res.writeHead(301, {
-            	'Location': 'http://porta.digitaldesk.com.br/login/erro',
-            	'Cache-Control': 'private'
-        	});
+            res.setHeader('Cache-Control', 'private');
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
             res.end();
         });
 
         rh.notAuthenticated(function(req, res, next) {
             console.log('[mustBe] rh.notAuthenticated');
 
-            res.writeHead(301, {
-            	'Location': 'http://porta.digitaldesk.com.br/login/deslogado', 
-            	'Cache-Control': 'private'
-            });
+            res.setHeader('Cache-Control', 'private');	
+            res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/deslogado'});
             res.end();
         });       
 
