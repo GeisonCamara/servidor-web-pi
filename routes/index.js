@@ -20,7 +20,7 @@ config.set('userInterface', 0);
 router.get("/", mustbe.authenticated(), index);
 
 function index(req, res, next) {
-    //res.writeHead(301, {'Cache-Control': 'private'});
+    res.writeHead(307, {'Cache-Control': 'private'});
     res.render('index', { title: 'Server Raspberry PI' });
 };
 
