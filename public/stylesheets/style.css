@@ -174,3 +174,7 @@ header > img{
 .inativo{
   color: red; 
 }
+
+.centralizar{
+  margin: 0 auto;
+}
