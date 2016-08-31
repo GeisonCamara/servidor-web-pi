@@ -186,8 +186,9 @@ header > img{
 .centralizarDeslogado{
   margin: 10px auto;
   position: relative;
-  width: 37%;
+  width: 100%;
   height: 50px;
+  text-align: center;
 }
 
 .centralizarSair{
@@ -200,6 +201,7 @@ header > img{
 .centralizarErro{
   margin: 10px auto;
   position: relative;
-  width: 15%;
+  width: 100%;
   height: 50px;
+  text-align: center;
 }
