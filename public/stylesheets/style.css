@@ -178,8 +178,9 @@ header > img{
 .centralizarBtn{
   margin: 50px auto;
   position: relative;
-  width: 15%;
+  width: 50%;
   height: 50px;
+  text-align: center;
 }
 
 .centralizarDeslogado{

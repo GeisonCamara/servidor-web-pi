@@ -20,13 +20,8 @@ config.set('userInterface', 0);
 router.get("/", mustbe.authenticated(), index);
 
 function index(req, res, next) {
-    //res.setHeader('Cache-Control', 'private');
     res.render('index', { title: 'Server Raspberry PI' });
 };
-
-/*router.get('/', function(req, res, next) {
-    res.render('index', { title: 'Server Raspberry PI' });
-});*/
 
 var flag = true;
 
