@@ -35,7 +35,8 @@ Mobile.post('/google/android', function(req, res){
                 client_id: '489399558653-rde58r2h6o8tnaddho7lathv2o135l7m.apps.googleusercontent.com',
                 client_secret: 'QlGfYitSzTxQv0PlhWXer8xh',
                 redirect_uri: '',
-                code: tokenGoogle};
+                code: tokenGoogle,
+				expires_in: 60};
 
     console.log('código pra pegar o token - '+ tokenGoogle);
     request.post({
