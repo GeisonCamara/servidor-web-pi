@@ -19,12 +19,12 @@ case "$1" in
   start)
     printf "%-50s" "Starting ibeacon..."
     cd /home/pi/iBeacon
-    ./ibeacon_start
+    sh ./ibeacon_start
     ;;
   stop)
     printf "%-50s" "Stopping ibeacon..."
     cd /home/pi/iBeacon
-    ./ibeacon_stop
+    sh ./ibeacon_stop
     ;;
   restart)
     $0 stop
