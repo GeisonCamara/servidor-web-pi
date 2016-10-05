@@ -23,12 +23,14 @@ Mobile.post('/usuario', function(req, res){
     }
 });
 
-Mobile.post('/google/ios', function(req, res){
+//método para diferenciar as ações de acordo com o aparelho usado
+/*Mobile.post('/google/ios', function(req, res){
 	var access_token = req.query.token;
 	acessarToken(req, res, access_token);
 });
 
-Mobile.post('/google/android', function(req, res){
+Mobile.post('/google/android', function(req, res){*/
+Mobile.post('/google', function(req, res){
     var tokenGoogle = req.query.token;
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
     var body = {grant_type: 'authorization_code',
