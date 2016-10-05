@@ -7,7 +7,8 @@ var request = require('request');
 token.post('/', function(req, res){
     var tokenGoogle = req.query.token;
     Mongo.find({devices: { $elemMatch: { value: tokenGoogle } }}, 'user', res, function(res, userObj){
-    	if (userObj[0].name == 'admin'){
+    	//método para verificar se o e-mail está desativado
+    	/*if (userObj[0].name == 'admin'){
     		lock('mobile', userObj[0].name);
 			res.send({status: true});
     	}
@@ -26,7 +27,9 @@ token.post('/', function(req, res){
 		            }
 	        	}
 	        )
-	    }
+	    }*/
+	    lock('mobile', userObj[0].name);
+		res.send({status: true});
     },function(req2, res2){
         res.send({status: false});
         console.log('token fail');
