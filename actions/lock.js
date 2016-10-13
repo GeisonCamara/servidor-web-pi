@@ -12,6 +12,10 @@ module.exports = function(device, user){
     if(user==undefined){
         user='web';
     }
+
+    if(user!='Exit button'){
+        sound();
+    }
     
     var insertObj = {date: data, time: time, user: user, device: device};
     
