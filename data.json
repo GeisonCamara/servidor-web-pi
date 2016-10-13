@@ -3,6 +3,9 @@
     "status": 1,
     "toque": "dingdong.wav"
   },
+  "unlock": {
+    "toque": "unlock.wav"
+  },
   "nfc": 0,
   "camera": 0,
   "btnInterno": 1,
