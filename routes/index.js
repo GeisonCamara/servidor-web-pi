@@ -57,7 +57,7 @@ if(config.get('campainha:status')==1){
             throw err;
         }
         if(value==1){
-            sound();
+            sound('campainha');
         }
     });
 }
