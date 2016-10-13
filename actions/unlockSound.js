@@ -3,9 +3,8 @@ module.exports = function(){
     var config = require('./../classes/config');
     var music = new unlockSound('/home/pi/node/trava/dev/servidor-web-pi/media/' + config.get('unlock:toque'));
 
+    console.log('musica');
     music.play();
 
-    setTimeout(function(){
-        music.resume();
-    }, 1000);
+    music.resume();
 }
