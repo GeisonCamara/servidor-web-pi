@@ -1,5 +1,5 @@
 var users = [{name: 'admin', password: '@digitaldesk1'},
-			{name: 'daia'. password: '@005ctg'}];
+			{name: 'daia', password: '@005ctg'}];
 
 function users(){
 
