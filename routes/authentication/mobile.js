@@ -12,7 +12,8 @@ Mobile.post('/usuario', function(req, res){
     var key = req.query.key;
     var name = req.query.user;
     console.log("/usuario " + JSON.stringify(users));
-    for(var i=0; i < users[i]; i++){
+
+    for(var i=0; i < users.length; i++){
         console.log(JSON.stringify(users) + "entrou for");
         if(key==users[i].password && name==users[i].name){
             console.log(JSON.stringify(users.name) + "entrou if");
