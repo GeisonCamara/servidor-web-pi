@@ -25,9 +25,9 @@ Mobile.post('/usuario', function(req, res){
             });
             break;
         }
-        else {
+        /*else {
             res.send({status: false});
-        }
+        }*/
     }
 });
 
