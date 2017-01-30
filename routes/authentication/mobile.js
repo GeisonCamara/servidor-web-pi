@@ -12,7 +12,9 @@ Mobile.post('/usuario', function(req, res){
     var key = req.query.key;
     var name = req.query.user;
     for(var i=0; i<users; i++){
+        console.log(user + "entrou for");
         if(key==users[i].password && name==users[i].name){
+            console.log(user.name + "entrou if");
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
                 conferirToken(req, res, token, password, name);
