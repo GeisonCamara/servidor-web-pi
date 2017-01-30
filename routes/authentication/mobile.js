@@ -2,6 +2,7 @@ var express = require('express');
 var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
+var users = require("./../../config.users.js");
 
 Mobile.post('/usuario', function(req, res){
     var password = "";
@@ -10,16 +11,18 @@ Mobile.post('/usuario', function(req, res){
         password += possible.charAt(Math.floor(Math.random() * possible.length));
     var key = req.query.key;
     var name = req.query.user;
-    if(key=="@digitaldesk1" && name=="admin"){
-        Mongo.find({name: name}, 'user', res, function(res, userObj){
-            var token = userObj[0].devices[1].value;
-            conferirToken(req, res, token, password, name);
-        },function(req2, res2){
-            cadastrarUsuario(req, res, password, name);
-        });
-    }
-    else {
-        res.send({status: false});
+    for(var i=0; i<users; i++){
+        if(key==users[i].password && name==users[i].name){
+            Mongo.find({name: name}, 'user', res, function(res, userObj){
+                var token = userObj[0].devices[1].value;
+                conferirToken(req, res, token, password, name);
+            },function(req2, res2){
+                cadastrarUsuario(req, res, password, name);
+            });
+        }
+        else {
+            res.send({status: false});
+        }
     }
 });
 
