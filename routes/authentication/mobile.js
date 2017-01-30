@@ -23,11 +23,12 @@ Mobile.post('/usuario', function(req, res){
             },function(req2, res2){
                 cadastrarUsuario(req, res, password, name);
             });
+            break;
         }
         else {
             res.send({status: false});
+            break;
         }
-    break;
     }
 });
 
