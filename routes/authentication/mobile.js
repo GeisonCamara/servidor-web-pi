@@ -2,7 +2,7 @@ var express = require('express');
 var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
-var users = require("./../../config.users.js");
+var users = require("./../../config/users.js");
 
 Mobile.post('/usuario', function(req, res){
     var password = "";
