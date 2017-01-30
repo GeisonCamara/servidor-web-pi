@@ -13,8 +13,10 @@ Mobile.post('/usuario', function(req, res){
     var name = req.query.user;
     console.log("/usuario " + JSON.stringify(users));
 
+    var achou = false;
     for(var i=0; i < users.length; i++){
         if(key==users[i].password && name==users[i].name){
+            achou = true;
             console.log("entrou if - " + JSON.stringify(users[i].name));
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 console.log("Achou");
@@ -25,10 +27,11 @@ Mobile.post('/usuario', function(req, res){
             });
             break;
         }
-        /*else {
-            res.send({status: false});
-        }*/
     }
+
+    if (!achou) {
+            res.send({status: false});
+        }
 });
 
 //método para diferenciar as ações de acordo com o aparelho usado
