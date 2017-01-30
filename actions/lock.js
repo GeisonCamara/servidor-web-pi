@@ -14,9 +14,9 @@ module.exports = function(device, user){
         user='web';
     }
 
-    if(user!='Exit button'){
+    /*if(user!='Exit button'){
         unlockSound();
-    }
+    }*/
     
     var insertObj = {date: data, time: time, user: user, device: device};
     
