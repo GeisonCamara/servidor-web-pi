@@ -20,15 +20,14 @@ Mobile.post('/usuario', function(req, res){
                 console.log("Achou");
                 var token = userObj[0].devices[1].value;
                 conferirToken(req, res, token, password, name);
-                break;
             },function(req2, res2){
                 cadastrarUsuario(req, res, password, name);
-                break;
             });
         }
         else {
             res.send({status: false});
         }
+    break;
     }
 });
 
