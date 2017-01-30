@@ -11,7 +11,7 @@ Mobile.post('/usuario', function(req, res){
         password += possible.charAt(Math.floor(Math.random() * possible.length));
     var key = req.query.key;
     var name = req.query.user;
-    console.log("/usuario");
+    console.log("/usuario " + users);
     for(var i=0; i<users; i++){
         console.log(users + "entrou for");
         if(key==users[i].password && name==users[i].name){
