@@ -24,7 +24,8 @@
     "nodemon": "^1.9.2",
     "onoff": "^1.1.1",
     "request": "^2.74.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "nodemon": "^1.9.2"
