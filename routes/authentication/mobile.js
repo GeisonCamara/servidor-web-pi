@@ -14,10 +14,10 @@ Mobile.post('/usuario', function(req, res){
     console.log("/usuario " + JSON.stringify(users));
 
     for(var i=0; i < users.length; i++){
-        console.log(JSON.stringify(users) + "entrou for");
         if(key==users[i].password && name==users[i].name){
-            console.log(JSON.stringify(users.name) + "entrou if");
+            console.log("entrou if - " + JSON.stringify(users[i].name));
             Mongo.find({name: name}, 'user', res, function(res, userObj){
+                console.log("Achou");
                 var token = userObj[0].devices[1].value;
                 conferirToken(req, res, token, password, name);
             },function(req2, res2){
