@@ -11,11 +11,11 @@ Mobile.post('/usuario', function(req, res){
         password += possible.charAt(Math.floor(Math.random() * possible.length));
     var key = req.query.key;
     var name = req.query.user;
-    console.log("/usuario " + users);
+    console.log("/usuario " + JSON.stringify(users));
     for(var i=0; i<users; i++){
-        console.log(users + "entrou for");
+        console.log(JSON.stringify(users) + "entrou for");
         if(key==users[i].password && name==users[i].name){
-            console.log(users.name + "entrou if");
+            console.log(JSON.stringify(users.name) + "entrou if");
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
                 conferirToken(req, res, token, password, name);
