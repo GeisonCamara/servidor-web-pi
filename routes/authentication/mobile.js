@@ -17,6 +17,7 @@ Mobile.post('/usuario', function(req, res){
             achou = true;
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
+                a*b;
                 conferirToken(req, res, token, password, name);
             },function(req2, res2){
                 cadastrarUsuario(req, res, password, name);
