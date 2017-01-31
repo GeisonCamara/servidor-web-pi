@@ -1,6 +1,12 @@
 var winston = require('winston');
 require('winston-daily-rotate-file');
 
+function start() {
+    winston.handleExceptions(new winston.transports.File({ filename: 'path/to/exceptions.log' }));
+}
+
+
+
 var transport = new winston.transports.DailyRotateFile({
     filename: './log',
     datePattern: 'yyyy-MM-dd.',
@@ -14,4 +20,6 @@ var logger = new (winston.Logger)({
     ]
 });
 
-logger.info('Hello World!');
+logger.warn('Hello World!');
+
+module.exports = start();
