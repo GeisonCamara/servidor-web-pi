@@ -8,7 +8,7 @@ function start() {
 
 
 var transport = new winston.transports.DailyRotateFile({
-    filename: '/logs/log',
+    filename: '${logDir}/log',
     datePattern: 'yyyy-MM-dd.',
     prepend: true,
     level: process.env.ENV === 'development' ? 'debug' : 'info'
