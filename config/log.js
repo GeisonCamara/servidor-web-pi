@@ -8,7 +8,7 @@ function start() {
 
 
 var transport = new winston.transports.DailyRotateFile({
-    filename: 'logs/log',
+    filename: './log',
     datePattern: 'yyyy-MM-dd.',
     prepend: true,
     level: process.env.ENV === 'development' ? 'debug' : 'info'
@@ -20,6 +20,6 @@ var logger = new (winston.Logger)({
     ]
 });
 
-logger.warn('Error');
+logger.warn('Error!');
 
 module.exports = start();
