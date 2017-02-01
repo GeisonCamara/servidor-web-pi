@@ -20,6 +20,10 @@ var logger = new (winston.Logger)({
     ]
 });
 
-logger.warn('Error!');
+logger.debug('Debugging info');
+logger.verbose('Verbose info');
+logger.info('Hello world');
+logger.warn('Warning message');
+logger.error('Error info');
 
 module.exports = start();
