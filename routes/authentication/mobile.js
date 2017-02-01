@@ -3,6 +3,7 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 var users = require("./../../config/users.js");
+var logger = require("winstons");
 
 Mobile.post('/usuario', function(req, res){
     var password = "";
@@ -17,7 +18,7 @@ Mobile.post('/usuario', function(req, res){
             achou = true;
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
-                a*b;
+                logger.info('Usuario encontrado!');
                 conferirToken(req, res, token, password, name);
             },function(req2, res2){
                 cadastrarUsuario(req, res, password, name);
