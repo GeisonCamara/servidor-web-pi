@@ -1,6 +1,7 @@
 module.exports = function(device, user){
     var mongo = require('./../classes/mongo.js');
     var unlockSound = require('./unlockSound.js');
+    var logger = require("winston");
     
     var now = new Date();  
     var dia = now.getDate();
@@ -24,6 +25,8 @@ module.exports = function(device, user){
         lock = new Gpio(20, 'out');
     
     lock.writeSync(1);
+
+    logger.info(user + " abriu a porta!");
     
     console.log(insertObj);
 
