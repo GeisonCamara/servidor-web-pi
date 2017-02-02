@@ -37,7 +37,7 @@ var logger = new (winston.Logger)({
 
 logger.debug('Debugging info');
 logger.verbose('Verbose info');
-logger.info('Hello world');
+logger.info('Info message');
 logger.warn('Warning message');
 logger.error('Error info');
 
