@@ -5,18 +5,33 @@ function start() {
     winston.handleExceptions(new winston.transports.File({ filename: 'path/to/exceptions.log' }));
 }
 
-
-
-var transport = new winston.transports.DailyRotateFile({
-    filename: './log',
-    datePattern: 'yyyy-MM-dd.',
-    prepend: true,
-    level: process.env.ENV === 'development' ? 'debug' : 'info'
-});
-
 var logger = new (winston.Logger)({
     transports: [
-        transport
+        new (winston.transports.File)({
+	      	name: 'info-file',
+	      	filename: 'filelog-info.log',
+	      	level: 'info'
+	    }),
+	    new (winston.transports.File)({
+	      	name: 'error-file',
+	      	filename: 'filelog-error.log',
+	      	level: 'error'
+	    }),
+	    new (winston.transports.File)({
+	      	name: 'warn-file',
+	      	filename: 'filelog-warn.log',
+	      	level: 'warn'
+	    }),
+	    new (winston.transports.File)({
+	      	name: 'verbose-file',
+	      	filename: 'filelog-verbose.log',
+	      	level: 'verbose'
+	    }),
+	    new (winston.transports.File)({
+	      	name: 'debug-file',
+	      	filename: 'filelog-debug.log',
+	      	level: 'debug'
+	    })
     ]
 });
 
