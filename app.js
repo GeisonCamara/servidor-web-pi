@@ -20,7 +20,7 @@ var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
 var abrirPorta = require('./routes/authentication/abrirPorta.js');
-var start = require('./config/log.js');
+var logger = require('./config/log.js');
 
 var app = express();
 
