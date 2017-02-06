@@ -10,9 +10,12 @@ winston.handleExceptions(new winston.transports.File({ filename: 'path/to/except
 var logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
-	      	name: 'info-file',
-	      	filename: 'filelog-info.log',
-	      	level: 'info'
+	      	level: 'info',
+            colorize: false,
+            timestamp: true,
+            json: true,
+            filename: '/var/log/mylog.log',
+            handleExceptions: true
 	    }),
 	    new (winston.transports.File)({
 	      	name: 'error-file',
