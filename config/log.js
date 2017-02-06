@@ -1,4 +1,4 @@
-var winston = require('winston');
+/*var winston = require('winston');
 require('winston-daily-rotate-file');
 
 var logger = new (winston.Logger)({
@@ -12,6 +12,7 @@ var logger = new (winston.Logger)({
                 timestamp: true,
                 json: true,
                 handleExceptions: true
-            })
+            }
+        )
     ]
-});
+});*/
