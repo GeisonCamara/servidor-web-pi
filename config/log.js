@@ -14,7 +14,7 @@ var logger = new (winston.Logger)({
             colorize: false,
             timestamp: true,
             json: true,
-            filename: '/var/log/mylog.log',
+            filename: 'logs/mylog.log',
             handleExceptions: true
 	    }),
 	    new (winston.transports.File)({
