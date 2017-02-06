@@ -19,7 +19,6 @@ Mobile.post('/usuario', function(req, res){
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
                 logger.info(name + " logou no aplicativo!");
-                star();
                 conferirToken(req, res, token, password, name);
             },function(req2, res2){
                 cadastrarUsuario(req, res, password, name);
