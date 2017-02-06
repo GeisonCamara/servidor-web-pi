@@ -2,8 +2,10 @@ var winston = require('winston');
 require('winston-daily-rotate-file');
 
 function start() {
-    winston.handleExceptions(new winston.transports.File({ filename: 'path/to/exceptions.log' }));
+    //winston.handleExceptions(new winston.transports.File({ filename: 'path/to/exceptions.log' }));
 }
+
+winston.handleExceptions(new winston.transports.File({ filename: 'path/to/exceptions.log' }));
 
 var logger = new (winston.Logger)({
     transports: [
@@ -21,16 +23,6 @@ var logger = new (winston.Logger)({
 	      	name: 'warn-file',
 	      	filename: 'filelog-warn.log',
 	      	level: 'warn'
-	    }),
-	    new (winston.transports.File)({
-	      	name: 'verbose-file',
-	      	filename: 'filelog-verbose.log',
-	      	level: 'verbose'
-	    }),
-	    new (winston.transports.File)({
-	      	name: 'debug-file',
-	      	filename: 'filelog-debug.log',
-	      	level: 'debug'
 	    })
     ]
 });
