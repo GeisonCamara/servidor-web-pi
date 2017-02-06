@@ -4,6 +4,8 @@ var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 var users = require("./../../config/users.js");
 var logger = require("winston");
+//var log = require("./../../config/log.js");
+
 
 Mobile.post('/usuario', function(req, res){
     var password = "";
