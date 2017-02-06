@@ -3,7 +3,7 @@ var Mobile = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var request = require('request');
 var users = require("./../../config/users.js");
-var logger = require("winston");
+var logger = require("./../../config/log.js");
 
 Mobile.post('/usuario', function(req, res){
     var password = "";
@@ -16,6 +16,7 @@ Mobile.post('/usuario', function(req, res){
     for(var i=0; i < users.length; i++){
         if(key==users[i].password && name==users[i].name){
             achou = true;
+            start();
             Mongo.find({name: name}, 'user', res, function(res, userObj){
                 var token = userObj[0].devices[1].value;
                 logger.info(name + " logou no aplicativo!");
