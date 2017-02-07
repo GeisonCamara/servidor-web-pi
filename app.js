@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var log = require('./config/log.js');
 
 var mustBe = require("mustbe");
 var mustBeConfig = require("./routes/authentication/mustBeConfig");
@@ -20,7 +21,6 @@ var userInsert = require('./routes/front-end/user/insert');
 var userUpdate = require('./routes/front-end/user/update');
 var userSearch = require('./routes/front-end/user/search');
 var abrirPorta = require('./routes/authentication/abrirPorta.js');
-var start = require('./config/log.js');
 
 var app = express();
 
