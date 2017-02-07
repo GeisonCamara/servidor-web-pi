@@ -14,5 +14,6 @@ var logger = new (winston.Logger)({
                 handleExceptions: true
             }
         )
-    ]
+    ],
+    exitOnError: false
 });
