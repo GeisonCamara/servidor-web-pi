@@ -100,7 +100,6 @@ function verificarGrupo(req, res, access_token, name, domain){
 }
 
 function consultarUsuario(req, res, access_token, name){
-    error();
     Mongo.find({name: name}, 'user', res, function(res, userObj){
        logger.info('Usuario encontrado.');
         var token = userObj[0].devices[1].value;
