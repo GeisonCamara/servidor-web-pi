@@ -2,6 +2,7 @@ module.exports = function(device, user){
     var mongo = require('./../classes/mongo.js');
     var unlockSound = require('./unlockSound.js');
     var logger = require("winston");
+    var log = require("./../config/log.js");
     
     var now = new Date();  
     var dia = now.getDate();

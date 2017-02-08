@@ -3,6 +3,7 @@ var token = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var lock = require('./../../actions/lock.js');
 var request = require('request');
+var log = require("./../../config/log.js");
 
 token.post('/', function(req, res){
     var tokenGoogle = req.query.token;

@@ -3,6 +3,7 @@ var router = express.Router();
 var url = require('url');
 var Mongo = require("./../classes/mongo.js");
 var request = require('request');
+var log = require("./../config/log.js");
 
 router.get('/', function(req, res, next) {
 	res.clearCookie("token");

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var config = require('./../classes/config.js');
+var log = require("./../config/log.js");
 
 router.get('/', function(req, res, next) {
     res.render('index', { title: 'Server Raspberry PI' });
