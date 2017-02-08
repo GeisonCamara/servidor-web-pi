@@ -27,9 +27,7 @@ module.exports = function(device, user){
     
     lock.writeSync(1);
 
-    logger.info(user + " abriu a porta!");
-    
-    console.log(insertObj);
+    logger.info(insertObj);
 
     mongo.insert(insertObj, 'historic', function(){});
     setTimeout(function(){

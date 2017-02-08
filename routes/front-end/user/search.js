@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongo = require('./../../../classes/mongo.js');
 var log = require("./../../../config/log.js");
+var logger = require("winston");
 
 function buildTable(item, all){
     var table = '<table><thead><tr><th>Nome</th>';
@@ -24,7 +25,7 @@ router.get('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
         if(req.query.user=='all'){
             mongo.find({status: "A"}, 'user', res, function(res, userObj){
-                console.log(userObj);
+                logger.info(userObj);
                 var result = buildTable(userObj, true);
                 res.type("text/html");
                 res.send(result);
@@ -32,7 +33,7 @@ router.get('/', function(req, res, next) {
         }
         else {
             mongo.find({name:req.query.user, status: "A"}, 'user', res, function(res, userObj){
-                console.log(userObj);
+                logger.info(userObj);
                 var result = buildTable(userObj, false);
                 res.type("text/html");
                 res.send(result);

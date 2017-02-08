@@ -3,6 +3,7 @@ mongoose.connect('mongodb://localhost/authentication');
 //var users = mongoose.model('users', {name: String, role: String, status: String, devices: [{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String}]});
 var users = mongoose.model('users', {name: String, role: String, status: String, devices: Array});
 var historic = mongoose.model('historic', {date: String, time: String, user: String, device: String});
+var logger = require("winston");
 var log = require("./../config/log.js");
 
 function mongo(){
@@ -18,11 +19,11 @@ mongo.prototype.find = function(queryObj, type, res, callback, callbackNotFound)
     }
     search.find(queryObj, function (err, userObj) {
         if(err){
-            console.log(err);
+            logger.error(err);
         }else if(userObj.length > 0){
             callback(res, userObj);
         }else{
-            console.log('User not found!');
+            logger.error('Usuário não encontrado!');
             callbackNotFound();
         }
     });
@@ -35,13 +36,13 @@ mongo.prototype.insert = function(newObj, type, callback){
     else if(type == 'user'){
         var newRegister = new users(newObj);
     }
-    console.log(newRegister);
+    logger.info(newRegister);
     newRegister.save(function (err, userObj) {
         if (err) {
-            console.log(err);
+            logger.error(err);
             if (callback) callback(false);
         } else {
-            console.log('saved successfully:');
+            logger.info('Salvo com sucesso!');
             if (callback) callback(true);
         }
     });
@@ -50,9 +51,9 @@ mongo.prototype.insert = function(newObj, type, callback){
 mongo.prototype.update = function(name, access_token, action, callback){
     users.findOne(name, function (err, userObj) {
         if (err){
-            console.log(err);
+            logger.error(err);
         } else if (userObj){
-            console.log('Token novo:' + access_token);
+            logger.info('Token novo: ' + access_token);
             if(action=='web'){
                 userObj.devices[0].value = access_token;
             } else {
@@ -60,15 +61,15 @@ mongo.prototype.update = function(name, access_token, action, callback){
             }
             userObj.update({ devices: userObj.devices }, function (err, token){
                 if (err){
-                    console.log(err);
+                    logger.error(err);
                     if (callback) callback(false);
                 } else{
-                    console.log('Atualizado', token);
+                    logger.info('Token atualizado: ' + token);
                     if (callback) callback(true);
                 }
             });
         } else {
-            console.log('User not found!');
+            logger.error('Usuário não encontrado!');
         }
     });
 }
