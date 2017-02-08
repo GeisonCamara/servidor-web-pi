@@ -62,7 +62,7 @@ Mobile.post('/google', function(req, res){
             acessarToken(req, res, access_token);
         }
         else{
-            logger.warn('Failha na primeira requisição.');
+            logger.warn('Failha na primeira requisição!');
             res.send({status: false}); 
         }
     });
@@ -77,11 +77,11 @@ function acessarToken(req, res, access_token){
                 var parse = JSON.parse(body);
                 var name = parse.name;
                 var domain = parse.hd;
-                logger.info('Nome - ' + name + ' Dominio - ' + domain);
+                logger.info('Nome: ' + name + ' - Dominio: ' + domain);
                 verificarGrupo(req, res, access_token, name, domain);
             }
             else{
-                logger.warn('Falha na segunda requisição.');
+                logger.warn('Falha na segunda requisição!');
                 res.send({status: false});
             }
         }
@@ -91,21 +91,21 @@ function acessarToken(req, res, access_token){
 function verificarGrupo(req, res, access_token, name, domain){
     if (domain == "digitaldesk.com.br") {
         consultarUsuario(req, res, access_token, name);
-        logger.info('e-mail valido.');
+        logger.info('e-mail valido!');
     }    
     else {
-        logger.warn('email inválido.');
+        logger.warn('email inválido!');
         res.send({status: false});
     }
 }
 
 function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
-       logger.info('Usuario encontrado.');
+       logger.info('Usuário encontrado!');
         var token = userObj[0].devices[1].value;
         conferirToken(req, res, token, access_token, name);
     },function(req2, res2){
-       logger.warn('Usuario não encontrado.');
+       logger.warn('Usuário não encontrado!');
         cadastrarUsuario(req, res, access_token, name);
     });
 }
@@ -117,13 +117,13 @@ function cadastrarUsuario(req, res, access_token, name){
             res.send({status: true, token: access_token});
         else res.send({status: false});
     });
-   logger.info('Usuario cadastrado.');
+   logger.info('Usuário cadastrado.');
 }
 
 function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
         res.send({status: true, token: access_token});
-       logger.info('Token correto.');
+       logger.info('Token válido!');
     }
     else {
         atualizarToken(req, res, access_token, name);

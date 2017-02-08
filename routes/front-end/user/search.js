@@ -25,7 +25,7 @@ router.get('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){
         if(req.query.user=='all'){
             mongo.find({status: "A"}, 'user', res, function(res, userObj){
-                logger.info(userObj);
+                //logger.info(userObj);
                 var result = buildTable(userObj, true);
                 res.type("text/html");
                 res.send(result);
@@ -33,7 +33,7 @@ router.get('/', function(req, res, next) {
         }
         else {
             mongo.find({name:req.query.user, status: "A"}, 'user', res, function(res, userObj){
-                logger.info(userObj);
+                //logger.info(userObj);
                 var result = buildTable(userObj, false);
                 res.type("text/html");
                 res.send(result);
