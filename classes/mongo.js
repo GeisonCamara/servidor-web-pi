@@ -64,7 +64,7 @@ mongo.prototype.update = function(name, access_token, action, callback){
                     logger.error(err);
                     if (callback) callback(false);
                 } else{
-                    logger.info('Token atualizado: ' + token);
+                    logger.info('Token atualizado: ' + JSON.stringify(token));
                     if (callback) callback(true);
                 }
             });
