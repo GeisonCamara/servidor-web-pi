@@ -1,14 +1,14 @@
 var mustBe = require("./../../node_modules/mustbe/mustbe");
 var Mongo = require("./../../classes/mongo.js");
 var log = require("./../../config/log.js");
+var logger = require("winston");
 
 module.exports = function(config) {
 
     config.userIdentity(function(id) {
 
         id.isAuthenticated(function(user, cb) {
-            console.log('[mustBe] id.isAuthenticated');
-
+            logger.info('[mustBe] id.isAuthenticated');
             if (user) cb(null, true);
             else cb(null, false);            
         });
@@ -19,7 +19,7 @@ module.exports = function(config) {
         rh.getUser(function(req, cb) {
             var tokenCookie = req.cookies["token"];
 
-            console.log('[mustBe] rh.getUser: token: ' + tokenCookie);
+            logger.info('[mustBe] rh.getUser: token: ' + tokenCookie);
 
             if (!tokenCookie) { 
                 cb(null, null);
@@ -34,7 +34,8 @@ module.exports = function(config) {
         });
 
         rh.notAuthorized(function(req, res, next) {
-            console.log('[mustBe] rh.notAuthorized');
+
+            logger.error('[mustBe] rh.notAuthorized');
 
             res.writeHead(301, {
             	'Location': 'http://porta.digitaldesk.com.br/login/erro',
@@ -44,7 +45,7 @@ module.exports = function(config) {
         });
 
         rh.notAuthenticated(function(req, res, next) {
-            console.log('[mustBe] rh.notAuthenticated');
+            logger.error('[mustBe] rh.notAuthenticated');
 
             res.writeHead(301, {
             	'Location': 'http://porta.digitaldesk.com.br/login/deslogado',
@@ -58,7 +59,6 @@ module.exports = function(config) {
     config.activities(function(activities) {
 
         activities.can("index.view", function(identity, params, cb) {
-            console.log('[mustBe] activities.can');
 
             cb(null, true);
         });

@@ -3,6 +3,7 @@ var router = express.Router();
 var url = require('url');
 var Mongo = require("./../classes/mongo.js");
 var request = require('request');
+var logger = require("winston");
 var log = require("./../config/log.js");
 
 router.get('/', function(req, res, next) {
@@ -25,7 +26,7 @@ router.get('/Google', function(req, res, next) {
 
 router.get('/CompletarGoogle', function(req, res, next) {
 	var url_parts = url.parse(req.url, true).query;
-	console.log('code - ' + JSON.stringify(url_parts.code));
+    logger.info('Código: ' + JSON.stringify(url_parts.code));
 
 	var codeGoogle = url_parts.code;
     var headers = {'Content-Type': 'x-www-form-urlencoded'};
@@ -44,10 +45,10 @@ router.get('/CompletarGoogle', function(req, res, next) {
             var access_token = parse.access_token;
             res.cookie("token", access_token);
             acessarToken(req, res, access_token);
-            console.log(access_token);
+            logger.info(access_token);
         }
         else{
-            console.log('fail na primeira requisição');
+            logger.error('Falha na primeira requisição!');
             res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 			res.end();
         }
@@ -63,11 +64,11 @@ function acessarToken(req, res, access_token){
                 var parse = JSON.parse(body);
                 var name = parse.name;
                 var domain = parse.hd;
-                console.log('nome - ' + name + ' dominio - ' + domain);
+                logger.info('Nome: ' + name + ' - Dominio: ' + domain);
                 verificarGrupo(req, res, access_token, name, domain);
             }
             else{
-                console.log('fail na segunda requisição');
+                logger.info('Falha na segunda requisição!');
                 res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 				res.end();
             }
@@ -78,10 +79,10 @@ function acessarToken(req, res, access_token){
 function verificarGrupo(req, res, access_token, name, domain){
     if (domain == "digitaldesk.com.br") {
         consultarUsuario(req, res, access_token, name);
-        console.log('e-mail valido');
+        logger.error('e-mail valido!');
     }    
     else {
-        console.log('email inválido');
+        logger.info('e-mail inválido!');
         res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 		res.end();
     }
@@ -89,11 +90,11 @@ function verificarGrupo(req, res, access_token, name, domain){
 
 function consultarUsuario(req, res, access_token, name){
     Mongo.find({name: name}, 'user', res, function(res, userObj){
-        console.log('usuario encontrado');
+        logger.info('Usuário encontrado!');
         var token = userObj[0].devices[0].value;
         conferirToken(req, res, token, access_token, name);
     },function(req2, res2){
-        console.log('usuario não encontrado');
+        logger.warn('Usuário não encontrado!');
         cadastrarUsuario(req, res, access_token, name);
     });
 }
@@ -109,14 +110,14 @@ function cadastrarUsuario(req, res, access_token, name){
 			res.end();
 		}
     });
-    console.log('usuario cadastrado');
+    logger.info('Usuário cadastrado!');
 }
 
 function conferirToken(req, res, token, access_token, name){
     if(access_token==token){
         res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br'});
 		res.end()
-        console.log('token correto');
+        logger.info('Token válido');
     }
     else {
         atualizarToken(req, res, access_token, name);

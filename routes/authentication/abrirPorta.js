@@ -3,6 +3,7 @@ var token = express.Router();
 var Mongo = require("./../../classes/mongo.js");
 var lock = require('./../../actions/lock.js');
 var request = require('request');
+var logger = require("winston");
 var log = require("./../../config/log.js");
 
 token.post('/', function(req, res){
@@ -33,7 +34,7 @@ token.post('/', function(req, res){
 		res.send({status: true});
     },function(req2, res2){
         res.send({status: false});
-        console.log('token fail');
+        logger.error('Token inválido!');
     });
 });
 

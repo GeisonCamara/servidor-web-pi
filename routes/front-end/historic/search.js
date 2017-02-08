@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mongo = require('./../../../classes/mongo.js');
 var log = require("./../../../config/log.js");
+var logger = require("winston");
 
 function buildTable(item){
     var table = '<table><thead><tr><th>Data</th><th>Horário</th><th>Usuário</th><th>Dispositivo</th></tr></thead><tbody>';
@@ -14,7 +15,7 @@ function buildTable(item){
 
 router.get('/', function(req, res, next) {
     mongo.find({}, 'historic', res, function(res, userObj){
-        console.log(userObj);
+        logger.info(userObj);
         var result = buildTable(userObj);
         res.type("text/html");
         res.send(result);
