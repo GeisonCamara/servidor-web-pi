@@ -1,5 +1,6 @@
 var mustBe = require("./../../node_modules/mustbe/mustbe");
 var Mongo = require("./../../classes/mongo.js");
+var log = require("./../../config/log.js");
 
 module.exports = function(config) {
 

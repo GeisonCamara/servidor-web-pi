@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongo = require('./../../../classes/mongo.js');
+var log = require("./../../../config/log.js");
 
 router.put('/', function(req, res, next) {
     if(req.query.hasOwnProperty('user')){

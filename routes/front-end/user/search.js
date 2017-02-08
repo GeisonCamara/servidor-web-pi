@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongo = require('./../../../classes/mongo.js');
+var log = require("./../../../config/log.js");
 
 function buildTable(item, all){
     var table = '<table><thead><tr><th>Nome</th>';

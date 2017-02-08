@@ -3,6 +3,7 @@ mongoose.connect('mongodb://localhost/authentication');
 //var users = mongoose.model('users', {name: String, role: String, status: String, devices: [{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String}]});
 var users = mongoose.model('users', {name: String, role: String, status: String, devices: Array});
 var historic = mongoose.model('historic', {date: String, time: String, user: String, device: String});
+var log = require("./../config/log.js");
 
 function mongo(){
 
