@@ -15,7 +15,7 @@ function buildTable(item){
 
 router.get('/', function(req, res, next) {
     mongo.find({}, 'historic', res, function(res, userObj){
-        //logger.info(userObj);
+        logger.info(userObj);
         var result = buildTable(userObj);
         res.type("text/html");
         res.send(result);
