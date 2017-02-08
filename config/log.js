@@ -8,7 +8,7 @@ var logger = new (winston.Logger)({
                 datePattern: 'yyyy-MM-dd.',
                 prepend: true,
                 level: 'error',
-                colorize: false,
+                colorize: true,
                 timestamp: true,
                 json: false,
                 handleExceptions: true
