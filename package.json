@@ -25,6 +25,7 @@
     "onoff": "^1.1.1",
     "pn532": "^0.1.0",
     "request": "^2.74.0",
+    "serialport": "^4.0.7",
     "serve-favicon": "~2.3.0",
     "winston": "^2.3.1",
     "winston-daily-rotate-file": "^1.4.4"
