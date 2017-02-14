@@ -3,14 +3,19 @@ var SerialPort = require('serialport').SerialPort;
 
 var serialPort = new SerialPort('/dev/ttyS0', { baudrate: 115200 });
 var rfid = new pn532.PN532(serialPort);
+var users = require("./../../config/users.js");
+var lock = require('./../../actions/lock.js');
 
 console.log('Waiting for rfid ready event...');
 rfid.on('ready', function() {
     console.log('Listening for a tag scan...');
     rfid.on('tag', function(tag) {
-        console.log(Date.now(), 'UID:', tag.uid);
-        if (tag.uid == "1c:88:0c:bb"){
-        	console.log("TAG Válida!")
-        }
+    	for(var i=0; i < users.length; i++){
+	        console.log(Date.now(), 'UID:', tag.uid);
+	        if(tag.uid==users[i].nfc){
+	        	console.log("TAG Válida!")
+	        	lock('NFC', users.name);
+	        }
+	    }
     });
 });
