@@ -1,4 +1,4 @@
-var pn532 = require('./../node_modules/pn532/src/pn532');
+var pn532 = require('./../../node_modules/pn532/src/pn532');
 var SerialPort = require('serialport').SerialPort;
 
 var serialPort = new SerialPort('/dev/ttyS0', { baudrate: 115200 });
