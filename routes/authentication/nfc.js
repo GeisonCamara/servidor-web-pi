@@ -3,6 +3,8 @@ var SerialPort = require('serialport').SerialPort;
 
 var serialPort = new SerialPort('/dev/ttyS0', { baudrate: 115200 });
 var rfid = new pn532.PN532(serialPort);
+var logger = require("winston");
+var log = require("./../../config/log.js");
 var users = require("./../../config/users.js");
 var lock = require('./../../actions/lock.js');
 
