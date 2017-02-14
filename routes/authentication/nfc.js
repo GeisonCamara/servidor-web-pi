@@ -10,12 +10,12 @@ var lock = require('./../../actions/lock.js');
 
 console.log('Waiting for rfid ready event...');
 rfid.on('ready', function() {
-    console.log('Listening for a tag scan...');
+    logger.info('Esperando por uma TAG...');
     rfid.on('tag', function(tag) {
     	for(var i=0; i < users.length; i++){
 	        console.log(Date.now(), 'UID:', tag.uid);
 	        if(tag.uid==users[i].nfc){
-	        	console.log("TAG Válida!")
+	        	logger.info("TAG Válida!")
 	        	lock('NFC', users[i].name);
 	        }
 	    }
