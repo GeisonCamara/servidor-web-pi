@@ -14,7 +14,7 @@ rfid.on('ready', function() {
 	        console.log(Date.now(), 'UID:', tag.uid);
 	        if(tag.uid==users[i].nfc){
 	        	console.log("TAG Válida!")
-	        	lock('NFC', users.name);
+	        	lock('NFC', users[i].name);
 	        }
 	    }
     });
