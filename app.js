@@ -4,7 +4,6 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var nfc = require('./routes/authentication/nfc.js');
 var log = require('./config/log.js');
 
 var mustBe = require("mustbe");
@@ -55,8 +54,6 @@ if(config.get('userInterface')){
     app.use('/user/alterar', userUpdate);
     app.use('/user/buscar', userSearch);
 }
-
-app.use(nfc);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
