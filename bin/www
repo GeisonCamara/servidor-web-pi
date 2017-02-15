@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+var nfc = require('./../routes/authentication/nfc.js');
 var app = require('../app');
 var debug = require('debug')('server-pi:server');
 var http = require('http');
