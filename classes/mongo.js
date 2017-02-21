@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/authentication');
 //var users = mongoose.model('users', {name: String, role: String, status: String, devices: [{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String}]});
 var users = mongoose.model('users', {name: String, role: String, status: String, devices: Array});
-var historic = mongoose.model('historic', {date: String, time: String, user: String, device: String});
+var historics = mongoose.model('historics', {date: String, time: String, user: String, device: String});
 var logger = require("winston");
 var log = require("./../config/log.js");
 
@@ -11,8 +11,8 @@ function mongo(){
 }
 
 mongo.prototype.find = function(queryObj, type, res, callback, callbackNotFound){
-    if(type == 'historic'){
-        var search = historic;
+    if(type == 'historics'){
+        var search = historics;
     }
     else if(type == 'user'){
         var search = users;
@@ -30,8 +30,8 @@ mongo.prototype.find = function(queryObj, type, res, callback, callbackNotFound)
 }
 
 mongo.prototype.insert = function(newObj, type, callback){
-    if(type == 'historic'){
-        var newRegister = new historic(newObj);
+    if(type == 'historics'){
+        var newRegister = new historics(newObj);
     }
     else if(type == 'user'){
         var newRegister = new users(newObj);
