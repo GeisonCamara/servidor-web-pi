@@ -29,7 +29,7 @@ module.exports = function(device, user){
 
     logger.info(insertObj);
 
-    mongo.insert(insertObj, 'historic', function(){});
+    mongo.insert(insertObj, 'historics', function(){});
     setTimeout(function(){
         lock.writeSync(0);
     },3000);
