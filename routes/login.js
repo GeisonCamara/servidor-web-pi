@@ -79,10 +79,10 @@ function acessarToken(req, res, access_token){
 function verificarGrupo(req, res, access_token, name, domain){
     if (domain == "digitaldesk.com.br") {
         consultarUsuario(req, res, access_token, name);
-        logger.error('e-mail valido!');
+        logger.info('e-mail valido!');
     }    
     else {
-        logger.info('e-mail inválido!');
+        logger.error('e-mail inválido!');
         res.writeHead(301, {'Location': 'http://porta.digitaldesk.com.br/login/erro'});
 		res.end();
     }
