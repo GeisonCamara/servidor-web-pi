@@ -11,7 +11,7 @@ module.exports = function(exchangeName, message) {
 
             ch.assertExchange(q, 'direct', { durable: false });
             // Note: on Node 6 Buffer.from(msg) should be used
-            ch.publish(q, severity, new Buffer(msg));
+            ch.publish(q, '', new Buffer(msg));
             logger.info(msg);
         });
         setTimeout(function() {
