@@ -23,7 +23,7 @@ module.exports = function(device, user) {
 
     var insertObj = { date: data, time: time, user: user, device: device };
 
-    rabbitSend('portaAberta', {});
+    rabbitSend('portaAberta', insertObj);
 
     var Gpio = require('onoff').Gpio,
         lock = new Gpio(20, 'out');
