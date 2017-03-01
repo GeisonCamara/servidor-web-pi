@@ -5,6 +5,7 @@ var sound = require('./../actions/sound.js');
 var config = require('./../classes/config.js');
 var mustbe = require("mustbe").routeHelpers();
 var log = require("./../config/log.js");
+var rabbitSend = require("./../config/rabbitSend");
 
 config.set('campainha:status', 1);
 config.set('campainha:toque', 'dingdong.wav');
@@ -36,29 +37,30 @@ var Gpio = require('onoff').Gpio,
 vcc.writeSync(1);
 rele.writeSync(1);
 
-if(flag){
+if (flag) {
     unlock.writeSync(0);
     flag = false;
 }
 
-if(config.get('btnInterno')==1){
-    button.watch(function(err, value){
+if (config.get('btnInterno') == 1) {
+    button.watch(function(err, value) {
         if (err) {
             throw err;
         }
-        if(value==1){
+        if (value == 1) {
             lock('buttonOut', 'Exit button');
         }
     });
 }
 
-if(config.get('campainha:status')==1){
-    dingdong.watch(function(err, value){
+if (config.get('campainha:status') == 1) {
+    dingdong.watch(function(err, value) {
         if (err) {
             throw err;
         }
-        if(value==1){
+        if (value == 1) {
             sound();
+            rabbitSend('campainhaAcionada', 'Campainha pressionada!')
         }
     });
 }
