@@ -14,7 +14,5 @@ module.exports = function(exchangeName, message) {
             ch.publish(q, '', new Buffer(msg));
             logger.info(msg);
         });
-
-        conn.close();
     });
 }
