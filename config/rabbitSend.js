@@ -7,7 +7,7 @@ module.exports = function(exchangeName, message) {
     amqp.connect('amqp://portaDD:@digitaldesk@192.168.1.31:5672/portaDD', function(err, conn) {
         conn.createChannel(function(err, ch) {
             var q = exchangeName;
-            var msg = JSON.parse(message);
+            var msg = JSON.stringify(message);
 
             ch.assertExchange(q, 'direct', { durable: false });
             // Note: on Node 6 Buffer.from(msg) should be used
