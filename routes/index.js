@@ -60,7 +60,7 @@ if (config.get('campainha:status') == 1) {
         }
         if (value == 1) {
             sound();
-            //rabbitSend('campainhaAcionada', {})
+            rabbitSend('campainhaAcionada', {})
         }
     });
 }
