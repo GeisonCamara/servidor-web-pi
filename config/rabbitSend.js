@@ -9,6 +9,9 @@ module.exports = function(exchangeName, message) {
             throw err;
         }
         conn.createChannel(function(err, ch) {
+            if (err) {
+                throw err;
+            }
 
             var q = exchangeName;
             var msg = JSON.stringify(message);
