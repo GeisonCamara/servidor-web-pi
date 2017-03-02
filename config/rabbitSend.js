@@ -6,8 +6,7 @@ module.exports = function(exchangeName, message) {
 
     amqp.connect('amqp://portaDD:@digitaldesk@192.168.1.31:5672/portaDD', function(err, conn) {
         if (err) {
-            logger.error("Error Rabbit: " + err.message);
-            return;
+            throw err;
         }
         conn.createChannel(function(err, ch) {
 
