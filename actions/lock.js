@@ -33,5 +33,5 @@ module.exports = function(device, user) {
         lock.writeSync(0);
     }, 3000);
 
-    rabbitSend('portaAberta', insertObj);
+    //rabbitSend('portaAberta', insertObj);
 }
