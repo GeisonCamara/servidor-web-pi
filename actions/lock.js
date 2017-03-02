@@ -23,17 +23,15 @@ module.exports = function(device, user) {
 
     var insertObj = { date: data, time: time, user: user, device: device };
 
-    rabbitSend('portaAberta', insertObj);
-
     var Gpio = require('onoff').Gpio,
         lock = new Gpio(20, 'out');
 
     lock.writeSync(1);
 
-    logger.info(insertObj);
-
     mongo.insert(insertObj, 'historics', function() {});
     setTimeout(function() {
         lock.writeSync(0);
     }, 3000);
+
+    rabbitSend('portaAberta', insertObj);
 }
