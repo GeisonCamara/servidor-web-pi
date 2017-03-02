@@ -16,7 +16,7 @@ module.exports = function(exchangeName, message) {
             var q = exchangeName;
             var msg = JSON.stringify(message);
 
-            ch.assertExchange(q, 'topic', { durable: false });
+            ch.assertExchange(q, 'topic', { durable: true });
             // Note: on Node 6 Buffer.from(msg) should be used
             ch.publish(q, '', new Buffer(msg));
             logger.info(msg);
