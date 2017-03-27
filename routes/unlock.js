@@ -3,7 +3,7 @@ var router = express.Router();
 var lock = require('./../actions/lock.js');
 var sound = require('./../actions/sound.js');
 var log = require("./../config/log.js");
-var utils = requirre("./../utils")
+var utils = require("./../utils")
 
 router.get('/', function(req, res, next) {
     if (req.query.key == "DD2016TRNEE") {
