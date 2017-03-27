@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
     }
 });
 
-router.get('/slack', function(req, res, next) {
+router.post('/slack', function(req, res, next) {
     var token = req.query.key;
 
     var tokenSlack = utils.passwordSlack[token];
