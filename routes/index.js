@@ -6,6 +6,7 @@ var config = require('./../classes/config.js');
 var mustbe = require("mustbe").routeHelpers();
 var log = require("./../config/log.js");
 var rabbitSend = require("./../config/rabbitSend");
+var utils = require("./../utils");
 
 config.set('campainha:status', 1);
 config.set('campainha:toque', 'dingdong.wav');
@@ -60,7 +61,9 @@ if (config.get('campainha:status') == 1) {
         }
         if (value == 1) {
             sound();
-            rabbitSend('campainhaAcionada', {})
+            var password = utils.generatePassword();
+            utils.passwordSlack[password] = { date: new Date() };
+            rabbitSend('campainhaAcionada', { url: "http://porta.digitaldesk.com.br/unlock/slack?key=" + password });
         }
     });
 }
