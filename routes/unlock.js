@@ -20,7 +20,7 @@ router.post('/slack', function(req, res, next) {
     var tokenSlack = utils.passwordSlack[token];
     if (!tokenSlack) {
         res.send({ status: false });
-    } else if (!tokenSlack.date.getTime() + (30 * 1000) > new Date.getTime()) {
+    } else if (!tokenSlack.date.getTime() + (30 * 1000) > new Date().getTime()) {
         res.send({ status: false });
         utils.passwordSlack[token] = undefined;
     } else {
