@@ -13,3 +13,4 @@ module.exports = {
     generatePassword: _generatePassword,
     passwordSlack: _passwordSlack,
 };
+//teste
