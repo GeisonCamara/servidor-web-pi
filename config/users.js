@@ -1,8 +1,7 @@
 var users = [{ name: 'admin', password: '@digitaldesk1', nfc: '' },
-    { name: 'daia', password: '@005ctg', nfc: '' },
-    { name: 'Carlos Klein', password: '', nfc: '1c:88:0c:bb' },
-    { name: 'Bruno Augusto Klein', password: '', nfc: '36:de:8b:8d' },
-    { name: 'Geison Camara', password: '', nfc: '0a:43:09:04' },
+    //{ name: 'daia', password: '@005ctg', nfc: '' },
+    //{ name: 'Carlos Klein', password: '', nfc: '1c:88:0c:bb' },
+    { name: 'Chaveiro com NFC', password: '', nfc: '36:de:8b:8d' },
     //{ name: 'Alice Balansin', password: '', nfc: 'bc:43:26:29' },
     { name: 'Amanda Behs', password: '', nfc: '55:f6:25:29' },
     { name: 'Anderson Mohr', password: '', nfc: '29:5f:26:29' },
@@ -24,7 +23,7 @@ var users = [{ name: 'admin', password: '@digitaldesk1', nfc: '' },
     { name: 'Leandro Ribeiro', password: '', nfc: 'e4:f0:26:29' },
     { name: 'Lidiane Bartz', password: '', nfc: '22:01:26:29' },
     { name: 'Marina Krein', password: '', nfc: '3b:2c:27:29' },
-    { name: 'Mateus Demboski', password: '', nfc: '5d:8c:26:29' },
+    //{ name: 'Mateus Demboski', password: '', nfc: '5d:8c:26:29' },
     //{ name: 'Nicolas Sroczynski', password: '', nfc: '47:86:26:29' },
     { name: 'Robson Klein', password: '', nfc: 'e7:7e:26:29' },
     { name: 'Rodrigo Finger', password: '', nfc: '0f:90:26:29' },
@@ -48,8 +47,7 @@ var users = [{ name: 'admin', password: '@digitaldesk1', nfc: '' },
     { name: 'Guest 06', password: '', nfc: 'c3:e2:26:29' },
     { name: 'Guest 07', password: '', nfc: '4c:f2:25:29' },
     { name: 'Guest 08', password: '', nfc: '64:13:26:29' },
-    { name: 'Guest 09', password: '', nfc: '32:1c:26:29' },
-    { name: 'Igor Kötz Nunes', password: '', nfc: '05:b2:35:73' }
+    { name: 'Guest 09', password: '', nfc: '32:1c:26:29' }
 ];
 
 
