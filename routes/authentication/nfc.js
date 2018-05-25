@@ -1,6 +1,6 @@
 console.log('---> Módulo do NFC');
 var pn532 = require('./../../node_modules/pn532/src/pn532');
-var SerialPort = require('serialport');
+var SerialPort = require('serialport').SerialPort;
 
 var serialPort = new SerialPort('/dev/ttyS0', { baudrate: 115200 });
 var rfid = new pn532.PN532(serialPort);
