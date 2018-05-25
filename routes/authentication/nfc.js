@@ -1,3 +1,4 @@
+console.log('---> Módulo do NFC');
 var pn532 = require('./../../node_modules/pn532/src/pn532');
 var SerialPort = require('serialport');
 
