@@ -1,7 +1,7 @@
 module.exports = function(type){
     var Sound = require('node-aplay');
     var config = require('./../classes/config');
-    var music = new Sound('./../media/' + config.get('campainha:toque'));
+    var music = new Sound('/home/pi/node/servidor-web-pi/media/' + config.get('campainha:toque'));
 
     music.play();
 
