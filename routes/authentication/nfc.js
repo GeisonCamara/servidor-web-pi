@@ -9,8 +9,10 @@ var users = require("./../../config/users.js");
 var lock = require('./../../actions/lock.js');
 
 rfid.on('ready', function() {
+	console.log('---> Esperando por uma TAG...');
     logger.info('Esperando por uma TAG...');
     rfid.on('tag', function(tag) {
+		console.log('---> Tag:', tag.uid);
     	for(var i=0; i < users.length; i++){
 	        logger.info('UID:', tag.uid);
 	        if(tag.uid==users[i].nfc){
