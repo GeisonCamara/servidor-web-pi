@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/authentication');
+mongoose.connect('mongodb://localhost/authentication', {useMongoClient: true});
 //var users = mongoose.model('users', {name: String, role: String, status: String, devices: [{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String},{status: String, ID: String, value: String, timeRange: String}]});
 var users = mongoose.model('users', {name: String, role: String, status: String, devices: Array});
 var historics = mongoose.model('historics', {date: String, time: String, user: String, device: String});
